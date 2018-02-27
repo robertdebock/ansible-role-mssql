@@ -1,11 +1,11 @@
 ---
 # defaults file for mssql
 
-# mssql_tools can be "absent" or "present". Installs mssql-tools and requirements.
-mssql_tools: present
-
 # mssql_server can be "absent" or "present". Install mssql-server.
 mssql_server: present
+
+# mssql_tools can be "absent" or "present". Installs mssql-tools and requirements.
+mssql_tools: present
 
 # mssql_sa_password contains the password for a system administrator.
 # The password must be at least 8 characters long and contain characters from three of the following four sets:
