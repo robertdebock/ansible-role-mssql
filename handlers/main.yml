@@ -1,0 +1,10 @@
+---
+# handlers file for mssql
+- name: restart mssql-server
+  service:
+    name: mssql-server
+    restarted: yes
+
+- name: wait for tcp port
+  wait_for:
+    port: "{{ mssql_tcp_port }}"

@@ -1,0 +1,98 @@
+---
+# tasks file for mssql
+- name: Add yum repository packages-microsoft-com-mssql-server-2017
+  yum_repository:
+    name: packages-microsoft-com-mssql-server-2017
+    description: Mssql Server 2017
+    baseurl: https://packages.microsoft.com/rhel/7/mssql-server-2017/
+    gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+    gpgcheck: yes
+  when:
+    - ansible_distribution == "CentOS" or ansible_distribution == "Red Hat Enterprise Linux"
+
+- name: Add zypper repository packages-microsoft-com-mssql-server-2017
+  zypper_repository:
+    name: packages-microsoft-com-mssql-server-2017
+    repo: https://packages.microsoft.com/sles/12/mssql-server-2017/
+    auto_import_keys: yes
+  when:
+    - ansible_distribution == "openSUSE Leap"
+
+- name: add apt key
+  apt_key:
+    url: https://packages.microsoft.com/keys/microsoft.asc
+  when:
+    - ansible_distribution == "Ubuntu"
+
+- name: Add apt repository packages-microsoft-com-mssql-server-2017
+  apt_repository:
+    repo: deb [arch=amd64] https://packages.microsoft.com/ubuntu/16.04/mssql-server-2017 xenial main
+  when:
+    - ansible_distribution == "Ubuntu"
+
+- name: install mssql-server
+  package:
+    name: mssql-server
+    state: "{{ mssql_server }}"
+
+- name: configure mssql-server using mssql-conf
+  command: /opt/mssql/bin/mssql-conf setup
+  args:
+    creates: /opt/mssql/mssql.conf
+  environment:
+    ACCEPT_EULA: Y
+    MSSQL_SA_PASSWORD: "{{ mssql_sa_password }}"
+    MSSQL_PID: "{{ mssql_pid }}"
+  notify:
+    - restart mssql-server
+
+- name: configure mssql-server using ini_file
+  ini_file:
+    path: /opt/mssql/mssql.conf
+    section: "{{ item.section }}"
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+  with_items:
+    - "{{ mssql_config }}"
+  notify:
+    - restart mssql-server
+
+- name: start and enable mssql-server
+  service:
+    name: mssql-server
+    state: started
+    enabled: yes
+  notify:
+    - wait for tcp port
+
+- name: Add yum repository packages-microsoft-com-prod
+  yum_repository:
+    name: packages-microsoft-com-prod
+    description: Microsoft SQL Server Red Hat repository
+    baseurl: https://packages.microsoft.com/rhel/7/prod/
+    gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+    gpgcheck: yes
+  when:
+    - ansible_distribution == "CentOS" or ansible_distribution == "Red Hat Enterprise Linux"
+
+- name: Add zypper repository packages-microsoft-com-mssql-server-2017
+  zypper_repository:
+    name: packages-microsoft-com-prod
+    repo: https://packages.microsoft.com/sles/12/prod/
+    auto_import_keys: yes
+  when:
+    - ansible_distribution == "openSUSE Leap"
+
+- name: Add apt repository packages-microsoft-com-prod
+  apt_repository:
+    repo: deb [arch=amd64] https://packages.microsoft.com/ubuntu/16.04/prod xenial main
+  when:
+    - ansible_distribution == "Ubuntu"
+
+- name: install mssql-tools
+  package:
+    name: "{{ item }}"
+    state: "{{ mssql_tools }}"
+  with_items:
+    - mssql-tools
+    - unixODBC-devel

@@ -1,0 +1,25 @@
+---
+- name: Converge
+  hosts: all
+  gather_facts: no
+  become: yes
+
+  roles:
+    - role: ansible-role-mssql
+
+  tasks:
+    - name: create database
+      mssql_db:
+        name: jackdata
+        state: present
+
+    - name: dump sql
+      copy:
+        src: dump.sql
+        dest: /tmp
+
+    - name: import sql
+      mssql_db:
+        name: my_db
+        state: import
+        target: /tmp/dump.sql

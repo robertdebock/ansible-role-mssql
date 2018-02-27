@@ -1,0 +1,39 @@
+---
+dependency:
+  name: galaxy
+  options:
+    role-file: requirements.yml
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: mssql-centos-7
+    image: centos:7
+  - name: mssql-opensuse-42.3
+    image: opensuse:42.3
+  - name: mssql-ubuntu-xenial
+    image: ubuntu:xenial
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+scenario:
+  name: default
+  test_sequence:
+    - lint
+    - destroy
+    - dependency
+    - syntax
+    - create
+    - prepare
+    - converge
+    - idempotence
+    - check
+    - side_effect
+    - verify
+    - destroy
+verifier:
+  name: goss
+  lint:
+    name: 'None'
