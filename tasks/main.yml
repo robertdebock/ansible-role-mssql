@@ -38,7 +38,7 @@
 - name: configure mssql-server using mssql-conf
   command: /opt/mssql/bin/mssql-conf setup
   args:
-    creates: /opt/mssql/mssql.conf
+    creates: "{{ mssql_directory }}/mssql.conf"
   environment:
     ACCEPT_EULA: Y
     MSSQL_SA_PASSWORD: "{{ mssql_sa_password }}"
@@ -48,7 +48,7 @@
 
 - name: configure mssql-server using ini_file
   ini_file:
-    path: /opt/mssql/mssql.conf
+    path: "{{ mssql_directory }}/mssql.conf"
     section: "{{ item.section }}"
     option: "{{ item.option }}"
     value: "{{ item.value }}"

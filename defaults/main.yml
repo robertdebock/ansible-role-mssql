@@ -28,10 +28,12 @@ mssql_tcp_port: 1433
 # - A product key (Format: #####-#####-#####-#####-#####)
 mssql_pid: Evaluation
 
+mssql_directory: /var/opt/mssql
+
 # Parameters, options and sections that are listed in mssql.conf
 mssql_config:
   - option: defaultbackupdir
-    value: /var/opt/mssql/data/
+    value: "{{ mssql_directory }}/data/"
     section: filelocation
   - option: memorylimitmb
     value: 512
