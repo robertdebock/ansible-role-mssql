@@ -10,6 +10,8 @@
   tasks:
     - name: create database
       mssql_db:
+        login_user: sa
+        login_password: "StR0nGp4ss."
         name: jackdata
         state: present
         login_host: localhost
