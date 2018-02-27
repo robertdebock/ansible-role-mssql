@@ -64,6 +64,8 @@
     enabled: yes
   notify:
     - wait for tcp port
+  when:
+    - ansible_virtualization_type != "docker"
 
 - name: Add yum repository packages-microsoft-com-prod
   yum_repository:
