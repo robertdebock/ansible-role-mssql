@@ -6,7 +6,3 @@
     state: restarted
   when:
     - ansible_virtualization_type != "docker"
-
-- name: wait for tcp port
-  wait_for:
-    port: "{{ mssql_tcp_port }}"

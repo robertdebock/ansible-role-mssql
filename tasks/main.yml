@@ -43,8 +43,6 @@
     ACCEPT_EULA: Y
     MSSQL_SA_PASSWORD: "{{ mssql_sa_password }}"
     MSSQL_PID: "{{ mssql_pid }}"
-  notify:
-    - restart mssql-server
 
 - name: configure mssql-server using ini_file
   ini_file:
@@ -62,8 +60,6 @@
     name: mssql-server
     state: started
     enabled: yes
-  notify:
-    - wait for tcp port
   when:
     - ansible_virtualization_type != "docker"
 
