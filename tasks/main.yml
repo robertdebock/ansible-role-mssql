@@ -95,3 +95,7 @@
     state: "{{ mssql_tools }}"
   environment:
     ACCEPT_EULA: Y
+
+- name: install pymssql
+  pip:
+    name: pymssql
