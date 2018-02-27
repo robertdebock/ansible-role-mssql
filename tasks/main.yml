@@ -96,3 +96,5 @@
   with_items:
     - mssql-tools
     - unixODBC-devel
+  environment:
+    ACCEPT_EULA: Y
