@@ -3,7 +3,7 @@
 - name: restart mssql-server
   service:
     name: mssql-server
-    restarted: yes
+    state: restarted
 
 - name: wait for tcp port
   wait_for:
