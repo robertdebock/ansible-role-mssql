@@ -91,10 +91,7 @@
 
 - name: install mssql-tools
   package:
-    name: "{{ item }}"
+    name: "mssql-tools"
     state: "{{ mssql_tools }}"
-  with_items:
-    - mssql-tools
-    - unixODBC-devel
   environment:
     ACCEPT_EULA: Y
