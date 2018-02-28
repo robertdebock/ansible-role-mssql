@@ -39,7 +39,11 @@ The simplest form:
     - role: robertdebock.mssql
 ```
 
-And here is a more customised installation:
+And here is a more customised installation. This:
+- bootstraps a system, so Ansible can use it.
+- uses /dev/sdb1 for a new partition
+- runs (only) the installation, which excludes the repository setup.
+
 ```
 - hosts: all
   become: true
