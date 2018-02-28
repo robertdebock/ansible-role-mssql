@@ -47,6 +47,9 @@
   notify:
     - restart mssql-server
 
+- name: flush handlers
+  meta: flush_handlers
+
 - name: start and enable mssql-server
   service:
     name: mssql-server
@@ -54,9 +57,6 @@
     enabled: yes
   when:
     - ansible_virtualization_type != "docker"
-
-- name: flush handlers
-  meta: flush_handlers
 
 - name: Add yum repository packages-microsoft-com-prod
   yum_repository:
