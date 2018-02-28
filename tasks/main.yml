@@ -34,15 +34,7 @@
   package:
     name: mssql-server
     state: "{{ mssql_server }}"
-
-- name: configure mssql-server using mssql-conf
-  command: /opt/mssql/bin/mssql-conf setup
-  args:
-    creates: "{{ mssql_directory }}/mssql.conf"
-  environment:
-    ACCEPT_EULA: Y
-    MSSQL_SA_PASSWORD: "{{ mssql_sa_password }}"
-    MSSQL_PID: "{{ mssql_pid }}"
+  notify: configure mssql-server using mssql-conf
 
 - name: configure mssql-server using ini_file
   ini_file:

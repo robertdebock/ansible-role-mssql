@@ -1,5 +1,12 @@
 ---
 # handlers file for mssql
+- name: configure mssql-server using mssql-conf
+  command: /opt/mssql/bin/mssql-conf setup
+  environment:
+    ACCEPT_EULA: Y
+    MSSQL_SA_PASSWORD: "{{ mssql_sa_password }}"
+    MSSQL_PID: "{{ mssql_pid }}"
+
 - name: restart mssql-server
   service:
     name: mssql-server
