@@ -23,4 +23,4 @@ mssql_ubuntu_repositories:
 mssql_packages:
   - name: mssql-server
   - name: mssql-tools
-  - name: mssql-server-agent
+  # - name: mssql-server-agent
