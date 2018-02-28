@@ -2,36 +2,34 @@
 # tasks file for mssql
 - name: Add yum repository packages-microsoft-com-mssql-server-2017
   yum_repository:
-    name: packages-microsoft-com-mssql-server-2017
-    description: Mssql Server 2017
-    baseurl: https://packages.microsoft.com/rhel/7/mssql-server-2017/
-    gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+    name: "{{ item.name }}"
+    baseurl: "{{ item.baseurl }}"
+    gpgkey: "{{ mssql_gpgkey }}"
     gpgcheck: yes
   when:
     - ansible_distribution == "CentOS" or ansible_distribution == "Red Hat Enterprise Linux"
+  with_items: "{{ mssql_rhel_repositories }}"
 
 - name: Add zypper repository packages-microsoft-com-mssql-server-2017
   zypper_repository:
-    name: packages-microsoft-com-mssql-server-2017
-    repo: https://packages.microsoft.com/sles/12/mssql-server-2017/
+    name: "{{ item.name }}"
+    repo: "{{ item.repo }}"
     auto_import_keys: yes
   when:
     - ansible_distribution == "openSUSE Leap"
-
-- name: add apt key
-  apt_key:
-    url: https://packages.microsoft.com/keys/microsoft.asc
-  when:
-    - ansible_distribution == "Ubuntu"
+  with_items: "{{ mssql_opensuse_repositories }}"
 
 - name: Add apt repository packages-microsoft-com-mssql-server-2017
   apt_repository:
-    repo: deb [arch=amd64] "{{ item }}" xenial main
+    repo: deb [arch=amd64] "{{ item.repo }}" xenial main
   when:
     - ansible_distribution == "Ubuntu"
-  with_items:
-    - https://packages.microsoft.com/ubuntu/16.04/mssql-server-2017
-    - https://packages.microsoft.com/ubuntu/16.04/prod
+  with_items: "{{ mssql_ubuntu_repositories }}"
+  notify:
+    - add apt key
+
+- name: flush handlers
+  meta: flush_handlers
 
 - name: install mssql-server
   package:
@@ -60,24 +58,6 @@
     enabled: yes
   when:
     - ansible_virtualization_type != "docker"
-
-- name: Add yum repository packages-microsoft-com-prod
-  yum_repository:
-    name: packages-microsoft-com-prod
-    description: Microsoft SQL Server Red Hat repository
-    baseurl: https://packages.microsoft.com/rhel/7/prod/
-    gpgkey: https://packages.microsoft.com/keys/microsoft.asc
-    gpgcheck: yes
-  when:
-    - ansible_distribution == "CentOS" or ansible_distribution == "Red Hat Enterprise Linux"
-
-- name: Add zypper repository packages-microsoft-com-mssql-server-2017
-  zypper_repository:
-    name: packages-microsoft-com-prod
-    repo: https://packages.microsoft.com/sles/12/prod/
-    auto_import_keys: yes
-  when:
-    - ansible_distribution == "openSUSE Leap"
 
 - name: install mssql-tools
   package:
