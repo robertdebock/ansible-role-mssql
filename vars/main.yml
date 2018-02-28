@@ -10,7 +10,7 @@ mssql_rhel_repositories:
     description: Microsoft tools
     baseurl: https://packages.microsoft.com/rhel/7/prod/
 
-mssql_opensuse_reposities:
+mssql_opensuse_repositories:
   - name: packages-microsoft-com-mssql-server-2017
     repo: https://packages.microsoft.com/sles/12/mssql-server-2017/
   - name: packages-microsoft-com-prod
