@@ -37,17 +37,6 @@
     state: "{{ mssql_server }}"
   notify: configure mssql-server using mssql-conf
 
-- name: configure mssql-server using ini_file
-  ini_file:
-    dest: "{{ mssql_directory }}/mssql.conf"
-    section: "{{ item.section }}"
-    option: "{{ item.option }}"
-    value: "{{ item.value }}"
-  with_items:
-    - "{{ mssql_config }}"
-  notify:
-    - restart mssql-server
-
 - name: flush handlers
   meta: flush_handlers
 
