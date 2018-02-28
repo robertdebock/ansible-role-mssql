@@ -1,46 +1,27 @@
-Tomcat
+MSSql
 =========
 
-[![Build Status](https://travis-ci.org/robertdebock/ansible-role-tomcat.svg?branch=master)](https://travis-ci.org/robertdebock/ansible-role-tomcat)
+[![Build Status](https://travis-ci.org/robertdebock/ansible-role-mssql.svg?branch=master)](https://travis-ci.org/robertdebock/ansible-role-mssql)
 
-Provides Apache Tomcat 7, 8 (default) or 9 for your system.
+Provides Microsoft SQL Server for your system.
 
 Requirements
 ------------
 
 These requirements are explicitly mentioned in meta/main.yml.
-- java
-- haveged
+- python-pip
 
 Role Variables
 --------------
 
-You can install multiple instances and multiple versions. This configuration is defined in the variable "tomcat_layout". If you do not use the tomcat_layout, defaults will be used. See defaults/main.yml for the default values.
-
-This is the default tomcat_layout:
-
-```
-tomcat_layout:
-  - name: tomcat
-    directory: /opt
-    version: 8.5
-    user: tomcat
-    group: tomcat
-    xms: 512M
-    xmx: 1024M
-    non_ssl_connector_port: 8080
-    ssl_connector_port: 8443
-    shutdown_port: 8005
-    ajp_port: 8009
-```
-
-See "Example Playbooks" for futher details.
+See defaults/main.yml, but mostly:
+- mssql_sa_password - The password for the administrator.
+- mssql_pid - The type of license to use.
 
 Dependencies
 ------------
 
-- robertdebock.java
-- robertdebock.haveged
+- robertdebock.python-pip
 
 Download the dependencies by issuing this command:
 ```
@@ -55,54 +36,53 @@ The simplest form:
 - hosts: servers
 
   roles:
-    - role: robertdebock.tomcat
+    - role: robertdebock.mssql
 ```
 
-And here is a heavily customized installation:
+And here is a more customised installation:
 ```
-- hosts: servers
+- hosts: all
+  become: true
+  gather_facts: no
 
-  roles:
-    - role: robertdebock.tomcat
-      tomcat_layout:
-        - name: appone
-          directory: /opt/appone
-          version: 7
-          user: appone
-          group: appone
-          xms: 512M
-          xmx: 1024M
-          non_ssl_connector_port: 8080
-          ssl_connector_port: 8443
-          shutdown_port: 8005
-          ajp_port: 8009
-          wars:
-            - url: https://tomcat.apache.org/tomcat-6.0-doc/appdev/sample/sample.war
-        - name: apptwo
-          directory: /opt/apptwo
-          version: 8
-          user: tomcat
-          group: tomcat
-          xms: 512M
-          xmx: 1024M
-          non_ssl_connector_port: 8081
-          ssl_connector_port: 8444
-          shutdown_port: 8006
-          ajp_port: 8010
-        - name: appthree
-          directory: /opt/appthree
-          version: 9
-          user: appthree
-          group: appthree
-          xms: 512M
-          xmx: 1024M
-          non_ssl_connector_port: 8082
-          ssl_connector_port: 8445
-          shutdown_port: 8007
-          ajp_port: 8011
+  tasks:
+  - name: role bootstrap
+    include_role:
+      name: robertdebock.bootstrap
+
+  - name: create volume group
+    lvg:
+      pvs: /dev/sdb1
+      vg: data
+
+  - name: create logical volume
+    lvol:
+      vg: data
+      lv: mssql
+      size: 10240
+
+  - name: create filesystem
+    filesystem:
+      fstype: ext3
+      dev: /dev/data/mssql
+
+  - name: mount filesystem
+    mount:
+      path: /var/opt/mssql
+      src: /dev/data/mssql
+      fstype: ext3
+      state: present
+
+  - name: role mssql
+    include_role:
+      name: robertdebock.mssql
+    vars:
+      mssql_sa_password: SoMeComPl3xP@sSWord
+      tags:
+        - installation
 ```
 
-Install this role using `galaxy install robertdebock.tomcat`.
+Install this role using `galaxy install robertdebock.mssql`.
 
 License
 -------

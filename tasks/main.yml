@@ -10,6 +10,8 @@
   when:
     - ansible_distribution == "CentOS" or ansible_distribution == "Red Hat Enterprise Linux"
   with_items: "{{ mssql_rhel_repositories }}"
+  tags:
+    - preparation
 
 - name: add zypper repository packages-microsoft-com-mssql-server-2017
   zypper_repository:
@@ -19,12 +21,16 @@
   when:
     - ansible_distribution == "openSUSE Leap"
   with_items: "{{ mssql_opensuse_repositories }}"
+  tags:
+    - preparation
 
 - name: TEMPORARILY add apt-transport-https
   package:
     name: apt-transport-https
   when:
     - ansible_distribution == "Ubuntu"
+  tags:
+    - preparation
 
 - name: add apt repository packages-microsoft-com-mssql-server-2017
   apt_repository:
@@ -32,12 +38,16 @@
   when:
     - ansible_distribution == "Ubuntu"
   with_items: "{{ mssql_ubuntu_repositories }}"
+  tags:
+    - preparation
 
 - name: add apt key
   apt_key:
     url: "{{ mssql_gpgkey }}"
   when:
     - ansible_distribution == "Ubuntu"
+  tags:
+    - preparation
 
 - name: install software in mssql_packages (package)
   package:
@@ -47,6 +57,8 @@
     ACCEPT_EULA: Y
   when:
     - ansible_distribution != "Ubuntu"
+  tags:
+    - installation
 
 - name: install software in mssql_packages (apt)
   apt:
@@ -59,6 +71,8 @@
     - ansible_distribution == "Ubuntu"
   notify:
     - configure mssql-server using mssql-conf
+  tags:
+    - installation
 
 - name: start and enable mssql-server
   service:
@@ -67,7 +81,11 @@
     enabled: yes
   when:
     - ansible_virtualization_type != "docker"
+  tags:
+    - installation
 
 - name: install pymssql
   pip:
     name: pymssql
+  tags:
+    - requirements
