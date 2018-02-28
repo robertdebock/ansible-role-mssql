@@ -59,9 +59,8 @@
     - ansible_distribution == "Ubuntu"
 
 - name: configure mssql-server using mssql-conf
-  command: /opt/mssql/bin/mssql-conf setup
+  command: /opt/mssql/bin/mssql-conf -n setup accept-eula
   environment:
-    ACCEPT_EULA: Y
     MSSQL_SA_PASSWORD: "{{ mssql_sa_password }}"
     MSSQL_PID: "{{ mssql_pid }}"
   args:
