@@ -4,6 +4,7 @@
   yum_repository:
     name: "{{ item.name }}"
     baseurl: "{{ item.baseurl }}"
+    description: "{{ item.description }}"
     gpgkey: "{{ mssql_gpgkey }}"
     gpgcheck: yes
   when:

@@ -4,8 +4,10 @@ mssql_gpgkey: https://packages.microsoft.com/keys/microsoft.asc
 
 mssql_rhel_repositories:
   - name: packages-microsoft-com-mssql-server-2017
+    description: Microsoft MSSQL server
     baseurl: https://packages.microsoft.com/rhel/7/mssql-server-2017/
   - name: packages-microsoft-com-prod
+    description: Microsoft tools
     baseurl: https://packages.microsoft.com/rhel/7/prod/
 
 mssql_opensuse_reposities:
