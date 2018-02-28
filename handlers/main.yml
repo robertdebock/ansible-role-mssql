@@ -6,3 +6,13 @@
     state: restarted
   when:
     - ansible_virtualization_type != "docker"
+
+- name: configure mssql-server using mssql-conf
+  command: /opt/mssql/bin/mssql-conf -n setup accept-eula
+  environment:
+    MSSQL_SA_PASSWORD: "{{ mssql_sa_password }}"
+    MSSQL_PID: "{{ mssql_pid }}"
+  # register: mssql_setup
+  # failed_when: "'Setup has completed successfully.' not in mssql_setup.stdout"
+  when:
+    - ansible_virtualization_type != "docker"

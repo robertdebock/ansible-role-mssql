@@ -57,18 +57,8 @@
     ACCEPT_EULA: Y
   when:
     - ansible_distribution == "Ubuntu"
-
-- name: configure mssql-server using mssql-conf
-  command: /opt/mssql/bin/mssql-conf -n setup accept-eula
-  environment:
-    MSSQL_SA_PASSWORD: "{{ mssql_sa_password }}"
-    MSSQL_PID: "{{ mssql_pid }}"
-  args:
-    creates: /var/opt/mssql/mssql.conf
-  register: mssql_setup
-  failed_when: "'Setup has completed successfully.' not in mssql_setup.stdout"
-  when:
-    - ansible_virtualization_type != "docker"
+  notify:
+    - configure mssql-server using mssql-conf
 
 - name: start and enable mssql-server
   service:
