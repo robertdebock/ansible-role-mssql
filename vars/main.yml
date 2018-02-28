@@ -19,6 +19,6 @@ mssql_ubuntu_repositories:
   - repo: https://packages.microsoft.com/ubuntu/16.04/prod
 
 mssql_packages:
-  - mssql-server
-  - mssql-tools
-  - mssql-server-agent
+  - name: mssql-server
+  - name: mssql-tools
+  - name: mssql-server-agent

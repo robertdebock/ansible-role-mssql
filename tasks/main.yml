@@ -34,8 +34,7 @@
 
 - name: install software in mssql_packages
   package:
-    name: mssql-server
-    state: "{{ mssql_server }}"
+    name: "{{ item.name }}"
   with_items: "{{ mssql_packages }}"
   environment:
     ACCEPT_EULA: Y
