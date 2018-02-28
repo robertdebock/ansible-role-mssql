@@ -20,6 +20,12 @@
     - ansible_distribution == "openSUSE Leap"
   with_items: "{{ mssql_opensuse_repositories }}"
 
+- name: TEMPORARILY add apt-transport-https
+  package:
+    name: apt-transport-https
+  when:
+    - ansible_distribution == "Ubuntu"
+
 - name: add apt repository packages-microsoft-com-mssql-server-2017
   apt_repository:
     repo: deb [arch=amd64] "{{ item.repo }}" xenial main
