@@ -39,12 +39,24 @@
   when:
     - ansible_distribution == "Ubuntu"
 
-- name: install software in mssql_packages
+- name: install software in mssql_packages (package)
   package:
     name: "{{ item.name }}"
   with_items: "{{ mssql_packages }}"
   environment:
     ACCEPT_EULA: Y
+  when:
+    - ansible_distribution != "Ubuntu"
+
+- name: install software in mssql_packages (apt)
+  apt:
+    name: "{{ item.name }}"
+    allow_unauthenticated: yes
+  with_items: "{{ mssql_packages }}"
+  environment:
+    ACCEPT_EULA: Y
+  when:
+    - ansible_distribution == "Ubuntu"
 
 - name: configure mssql-server using mssql-conf
   command: /opt/mssql/bin/mssql-conf setup
@@ -56,6 +68,8 @@
     creates: /var/opt/mssql/mssql.conf
   register: mssql_setup
   failed_when: "'Setup has completed successfully.' not in mssql_setup.stdout"
+  when:
+    - ansible_virtualization_type != "docker"
 
 - name: start and enable mssql-server
   service:
