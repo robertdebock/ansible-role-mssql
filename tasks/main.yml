@@ -26,9 +26,12 @@
 
 - name: Add apt repository packages-microsoft-com-mssql-server-2017
   apt_repository:
-    repo: deb [arch=amd64] https://packages.microsoft.com/ubuntu/16.04/mssql-server-2017 xenial main
+    repo: deb [arch=amd64] "{{ item }}" xenial main
   when:
     - ansible_distribution == "Ubuntu"
+  with_items:
+    - https://packages.microsoft.com/ubuntu/16.04/mssql-server-2017
+    - https://packages.microsoft.com/ubuntu/16.04/prod
 
 - name: install mssql-server
   package:
@@ -75,12 +78,6 @@
     auto_import_keys: yes
   when:
     - ansible_distribution == "openSUSE Leap"
-
-- name: Add apt repository packages-microsoft-com-prod
-  apt_repository:
-    repo: deb [arch=amd64] https://packages.microsoft.com/ubuntu/16.04/prod xenial main
-  when:
-    - ansible_distribution == "Ubuntu"
 
 - name: install mssql-tools
   package:
