@@ -1,18 +1,5 @@
 ---
 # handlers file for mssql
-- name: add apt key
-  apt_key:
-    url: "{{ mssql_gpgkey }}"
-  when:
-    - ansible_distribution == "Ubuntu"
-
-- name: configure mssql-server using mssql-conf
-  command: /opt/mssql/bin/mssql-conf setup
-  environment:
-    ACCEPT_EULA: Y
-    MSSQL_SA_PASSWORD: "{{ mssql_sa_password }}"
-    MSSQL_PID: "{{ mssql_pid }}"
-
 - name: restart mssql-server
   service:
     name: mssql-server

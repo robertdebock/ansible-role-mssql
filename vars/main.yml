@@ -17,3 +17,8 @@ mssql_opensuse_reposities:
 mssql_ubuntu_repositories:
   - repo: https://packages.microsoft.com/ubuntu/16.04/mssql-server-2017
   - repo: https://packages.microsoft.com/ubuntu/16.04/prod
+
+mssql_packages:
+  - mssql-server
+  - mssql-tools
+  - mssql-server-agent

@@ -1,6 +1,6 @@
 ---
 # tasks file for mssql
-- name: Add yum repository packages-microsoft-com-mssql-server-2017
+- name: add yum repository packages-microsoft-com-mssql-server-2017
   yum_repository:
     name: "{{ item.name }}"
     baseurl: "{{ item.baseurl }}"
@@ -10,7 +10,7 @@
     - ansible_distribution == "CentOS" or ansible_distribution == "Red Hat Enterprise Linux"
   with_items: "{{ mssql_rhel_repositories }}"
 
-- name: Add zypper repository packages-microsoft-com-mssql-server-2017
+- name: add zypper repository packages-microsoft-com-mssql-server-2017
   zypper_repository:
     name: "{{ item.name }}"
     repo: "{{ item.repo }}"
@@ -19,26 +19,35 @@
     - ansible_distribution == "openSUSE Leap"
   with_items: "{{ mssql_opensuse_repositories }}"
 
-- name: Add apt repository packages-microsoft-com-mssql-server-2017
+- name: add apt repository packages-microsoft-com-mssql-server-2017
   apt_repository:
     repo: deb [arch=amd64] "{{ item.repo }}" xenial main
   when:
     - ansible_distribution == "Ubuntu"
   with_items: "{{ mssql_ubuntu_repositories }}"
-  notify:
-    - add apt key
 
-- name: flush handlers
-  meta: flush_handlers
+- name: add apt key
+  apt_key:
+    url: "{{ mssql_gpgkey }}"
+  when:
+    - ansible_distribution == "Ubuntu"
 
-- name: install mssql-server
+- name: install software in mssql_packages
   package:
     name: mssql-server
     state: "{{ mssql_server }}"
-  notify: configure mssql-server using mssql-conf
+  with_items: "{{ mssql_packages }}"
+  environment:
+    ACCEPT_EULA: Y
 
-- name: flush handlers
-  meta: flush_handlers
+- name: configure mssql-server using mssql-conf
+  command: /opt/mssql/bin/mssql-conf setup
+  environment:
+    ACCEPT_EULA: Y
+    MSSQL_SA_PASSWORD: "{{ mssql_sa_password }}"
+    MSSQL_PID: "{{ mssql_pid }}"
+  args:
+    creates: /var/opt/mssql/mssql.conf
 
 - name: start and enable mssql-server
   service:
@@ -47,13 +56,6 @@
     enabled: yes
   when:
     - ansible_virtualization_type != "docker"
-
-- name: install mssql-tools
-  package:
-    name: "mssql-tools"
-    state: "{{ mssql_tools }}"
-  environment:
-    ACCEPT_EULA: Y
 
 - name: install pymssql
   pip:
