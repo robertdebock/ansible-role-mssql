@@ -47,6 +47,9 @@
     MSSQL_PID: "{{ mssql_pid }}"
   args:
     creates: /var/opt/mssql/mssql.conf
+  register: mssql_setup
+  failed_when: "'Setup has completed successfully.' not in mssql_setup.stdout"
+
 
 - name: start and enable mssql-server
   service:
