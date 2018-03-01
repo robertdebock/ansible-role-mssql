@@ -24,14 +24,6 @@
   tags:
     - preparation
 
-- name: TEMPORARILY add apt-transport-https
-  package:
-    name: apt-transport-https
-  when:
-    - ansible_distribution == "Ubuntu"
-  tags:
-    - preparation
-
 - name: add apt repository packages-microsoft-com-mssql-server-2017
   apt_repository:
     repo: deb [arch=amd64] "{{ item.repo }}" xenial main
