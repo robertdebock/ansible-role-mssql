@@ -41,7 +41,7 @@ The simplest form:
 
 And here is a more customised installation. This:
 - bootstraps a system, so Ansible can use it.
-- uses /dev/sdb1 for a new partition
+- uses /dev/sdb1 for a new partition.
 - runs (only) the installation, which excludes the repository setup.
 
 ```
@@ -67,7 +67,7 @@ And here is a more customised installation. This:
 
   - name: create filesystem
     filesystem:
-      fstype: ext3
+      fstype: xfs
       dev: /dev/data/mssql
 
   - name: mount filesystem
