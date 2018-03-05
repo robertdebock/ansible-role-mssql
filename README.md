@@ -8,8 +8,7 @@ Provides Microsoft SQL Server for your system.
 Requirements
 ------------
 
-These requirements are explicitly mentioned in meta/main.yml.
-- python-pip
+- pip available.
 
 Role Variables
 --------------
@@ -21,7 +20,12 @@ See defaults/main.yml, but mostly:
 Dependencies
 ------------
 
-- robertdebock.python-pip
+These requirements are described in `requirements.yml`:
+- role: robertdebock.bootstrap
+- role: robertdebock.buildtools
+- role: robertdebock.epel
+- role: robertdebock.scl
+- role: robertdebock.python-pip
 
 Download the dependencies by issuing this command:
 ```
@@ -36,6 +40,11 @@ The simplest form:
 - hosts: servers
 
   roles:
+    - role: robertdebock.bootstrap
+    - role: robertdebock.buildtools
+    - role: robertdebock.epel
+    - role: robertdebock.scl
+    - role: robertdebock.python-pip
     - role: robertdebock.mssql
 ```
 
@@ -76,6 +85,15 @@ And here is a more customised installation. This:
       src: /dev/data/mssql
       fstype: ext3
       state: present
+
+  - name: include dependant roles
+    include_role:
+      name: "{{ item }}"
+    with_items:
+      - robertdebock.buildtools
+      - robertdebock.epel
+      - robertdebock.scl
+      - robertdebock.python-pip
 
   - name: role mssql
     include_role:

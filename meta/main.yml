@@ -27,5 +27,4 @@ galaxy_info:
     - OpenSUSE
     - Ubuntu
 
-dependencies:
-  - robertdebock.python-pip
+dependencies: []
