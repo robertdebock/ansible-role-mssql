@@ -89,7 +89,7 @@
     ACCEPT_EULA: Y
   when:
     - ansible_distribution == "Ubuntu"
-  nofify:
+  notify:
     - restart mssql-server
 
 - name: flush handlers
