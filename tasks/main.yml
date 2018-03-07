@@ -10,8 +10,6 @@
   when:
     - ansible_distribution == "CentOS" or ansible_distribution == "Red Hat Enterprise Linux"
   with_items: "{{ mssql_rhel_repositories }}"
-  tags:
-    - preparation
 
 - name: add zypper repository packages-microsoft-com-mssql-server-2017
   zypper_repository:
@@ -21,8 +19,12 @@
   when:
     - ansible_distribution == "openSUSE Leap"
   with_items: "{{ mssql_opensuse_repositories }}"
-  tags:
-    - preparation
+
+- name: add apt key
+  apt_key:
+    url: "{{ mssql_gpgkey }}"
+  when:
+    - ansible_distribution == "Ubuntu"
 
 - name: add apt repository packages-microsoft-com-mssql-server-2017
   apt_repository:
@@ -30,18 +32,8 @@
   when:
     - ansible_distribution == "Ubuntu"
   with_items: "{{ mssql_ubuntu_repositories }}"
-  tags:
-    - preparation
 
-- name: add apt key
-  apt_key:
-    url: "{{ mssql_gpgkey }}"
-  when:
-    - ansible_distribution == "Ubuntu"
-  tags:
-    - preparation
-
-- name: install software in mssql-server (package)
+- name: install software mssql-server (package)
   package:
     name: mssql-server
   environment:
@@ -50,20 +42,16 @@
     - ansible_distribution != "Ubuntu"
   notify:
     - configure mssql-server using mssql-conf
-  tags:
-    - installation
 
-- name: install software in mssql-tools (package)
+- name: install software mssql-tools (package)
   package:
     name: mssql-tools
   environment:
     ACCEPT_EULA: Y
   when:
     - ansible_distribution != "Ubuntu"
-  tags:
-    - installation
 
-- name: install software in mssql-server-agent (package)
+- name: install software mssql-server-agent (package)
   package:
     name: mssql-server-agent
   environment:
@@ -72,22 +60,37 @@
     - ansible_distribution != "Ubuntu"
   notify:
     - restart mssql-server
-  tags:
-    - installation
 
-- name: install software in mssql_packages (apt)
+- name: install software in mssql-server (apt)
   apt:
-    name: "{{ item.name }}"
+    name: mssql-server
     allow_unauthenticated: yes
-  with_items: "{{ mssql_packages }}"
   environment:
     ACCEPT_EULA: Y
   when:
     - ansible_distribution == "Ubuntu"
   notify:
     - configure mssql-server using mssql-conf
-  tags:
-    - installation
+
+- name: install software in mssql-tools (apt)
+  apt:
+    name: mssql-tools
+    allow_unauthenticated: yes
+  environment:
+    ACCEPT_EULA: Y
+  when:
+    - ansible_distribution == "Ubuntu"
+
+- name: install software in mssql-server-agent (apt)
+  apt:
+    name: mssql-server-agent
+    allow_unauthenticated: yes
+  environment:
+    ACCEPT_EULA: Y
+  when:
+    - ansible_distribution == "Ubuntu"
+  nofify:
+    - restart mssql-server
 
 - name: flush handlers
   meta: flush_handlers
@@ -99,11 +102,3 @@
     enabled: yes
   when:
     - ansible_virtualization_type != "docker"
-  tags:
-    - installation
-
-- name: install pymssql
-  pip:
-    name: pymssql
-  tags:
-    - requirements

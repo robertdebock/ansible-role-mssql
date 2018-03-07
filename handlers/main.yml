@@ -13,7 +13,5 @@
     MSSQL_SA_PASSWORD: "{{ mssql_sa_password }}"
     MSSQL_PID: "{{ mssql_pid }}"
     ACCEPT_EULA: Y
-  # register: mssql_setup
-  # failed_when: "'Setup has completed successfully.' not in mssql_setup.stdout"
   when:
     - ansible_virtualization_type != "docker"

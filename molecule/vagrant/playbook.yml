@@ -5,21 +5,5 @@
   become: yes
 
   roles:
+    - role: robertdebock.bootstrap
     - role: ansible-role-mssql
-
-  tasks:
-    # - name: create database
-    #   mssql_db:
-    #     login_host: 127.0.0.1
-    #     login_user: SA
-    #     login_password: "{{ mssql_sa_password }}"
-    #     name: testdb
-    #     state: present
-    #
-    # - name: delete database
-    #   mssql_db:
-    #     name: testdb
-    #     state: absent
-    #     login_host: 127.0.0.1
-    #     login_user: SA
-    #     login_password: "{{ mssql_sa_password }}"
