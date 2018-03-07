@@ -1,11 +1,11 @@
 ---
 # handlers file for mssql
-# - name: restart mssql-server
-#   service:
-#     name: mssql-server
-#     state: restarted
-#   when:
-#     - ansible_virtualization_type != "docker"
+- name: restart mssql-server
+  service:
+    name: mssql-server
+    state: restarted
+  when:
+    - ansible_virtualization_type != "docker"
 
 - name: configure mssql-server using mssql-conf
   command: /opt/mssql/bin/mssql-conf -n setup

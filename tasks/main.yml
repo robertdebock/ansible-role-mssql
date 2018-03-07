@@ -41,16 +41,37 @@
   tags:
     - preparation
 
-- name: install software in mssql_packages (package)
+- name: install software in mssql-server (package)
   package:
-    name: "{{ item.name }}"
-  with_items: "{{ mssql_packages }}"
+    name: mssql-server
   environment:
     ACCEPT_EULA: Y
   when:
     - ansible_distribution != "Ubuntu"
   notify:
     - configure mssql-server using mssql-conf
+  tags:
+    - installation
+
+- name: install software in mssql-tools (package)
+  package:
+    name: mssql-tools
+  environment:
+    ACCEPT_EULA: Y
+  when:
+    - ansible_distribution != "Ubuntu"
+  tags:
+    - installation
+
+- name: install software in mssql-server-agent (package)
+  package:
+    name: mssql-server-agent
+  environment:
+    ACCEPT_EULA: Y
+  when:
+    - ansible_distribution != "Ubuntu"
+  notify:
+    - restart mssql-server
   tags:
     - installation
 
