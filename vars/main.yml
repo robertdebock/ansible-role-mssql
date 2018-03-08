@@ -30,4 +30,4 @@ mssql_server_agent_package:
   CentOS: mssql-server-agent
   openSUSE Leap: mssql-server-agent-14.0.3015.40-1.x86_64
   Red Hat Enterprise Linux: mssql-server-agent
-  Ubuntu: mssql-server-agent_14.0.3015.40-1_amd64.deb
+  Ubuntu: mssql-server-agent_14.0.3015.40-1_amd64
