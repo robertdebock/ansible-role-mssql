@@ -39,7 +39,7 @@
 
 - name: install software mssql-server (package)
   package:
-    name: mssql-server
+    name: "{{ mssql_server_package[ansible_distribution] }}"
   environment:
     ACCEPT_EULA: Y
   when:
@@ -57,7 +57,7 @@
 
 - name: install software mssql-server-agent (package)
   package:
-    name: mssql-server-agent
+    name: "{{ mssql_server_agent_package[ansible_distribution] }}"
   environment:
     ACCEPT_EULA: Y
   when:
