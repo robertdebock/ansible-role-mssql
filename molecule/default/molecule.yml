@@ -16,16 +16,6 @@ platforms:
     image: debian:jessie
   - name: phpmyadmin-debian-stretch
     image: debian:stretch
-  - name: phpmyadmin-fedora-23
-    image: fedora:23
-  - name: phpmyadmin-fedora-24
-    image: fedora:24
-  - name: phpmyadmin-fedora-25
-    image: fedora:25
-  - name: phpmyadmin-fedora-26
-    image: fedora:26
-  - name: phpmyadmin-fedora-27
-    image: fedora:27
   - name: mssql-opensuse-42.3
     image: opensuse:42.3
   - name: mssql-ubuntu-xenial
