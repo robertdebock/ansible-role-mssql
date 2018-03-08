@@ -47,6 +47,17 @@
   notify:
     - configure mssql-server using mssql-conf
 
+- name: install software in mssql-server (apt)
+  apt:
+    name: "{{ mssql_server_package[ansible_distribution] }}"
+    allow_unauthenticated: yes
+  environment:
+    ACCEPT_EULA: Y
+  when:
+    - ansible_distribution == "Ubuntu"
+  notify:
+    - configure mssql-server using mssql-conf
+
 - name: install software mssql-tools (package)
   package:
     name: mssql-tools
@@ -54,6 +65,15 @@
     ACCEPT_EULA: Y
   when:
     - ansible_distribution != "Ubuntu"
+
+- name: install software in mssql-tools (apt)
+  apt:
+    name: mssql-tools
+    allow_unauthenticated: yes
+  environment:
+    ACCEPT_EULA: Y
+  when:
+    - ansible_distribution == "Ubuntu"
 
 - name: install software mssql-server-agent (package)
   package:
@@ -65,29 +85,9 @@
   notify:
     - restart mssql-server
 
-- name: install software in mssql-server (apt)
-  apt:
-    name: mssql-server
-    allow_unauthenticated: yes
-  environment:
-    ACCEPT_EULA: Y
-  when:
-    - ansible_distribution == "Ubuntu"
-  notify:
-    - configure mssql-server using mssql-conf
-
-- name: install software in mssql-tools (apt)
-  apt:
-    name: mssql-tools
-    allow_unauthenticated: yes
-  environment:
-    ACCEPT_EULA: Y
-  when:
-    - ansible_distribution == "Ubuntu"
-
 - name: install software in mssql-server-agent (apt)
   apt:
-    name: mssql-server-agent
+    name: "{{ mssql_server_agent_package[ansible_distribution] }}"
     allow_unauthenticated: yes
   environment:
     ACCEPT_EULA: Y
