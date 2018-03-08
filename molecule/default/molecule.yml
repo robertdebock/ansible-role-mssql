@@ -14,8 +14,6 @@ platforms:
     image: debian:buster
   - name: phpmyadmin-debian-jessie
     image: debian:jessie
-  - name: phpmyadmin-debian-sid
-    image: debian:sid
   - name: phpmyadmin-debian-stretch
     image: debian:stretch
   - name: phpmyadmin-fedora-23
