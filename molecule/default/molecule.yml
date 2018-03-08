@@ -8,8 +8,6 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: mssql-centos-6
-    image: centos:6
   - name: mssql-centos-7
     image: centos:7
   - name: phpmyadmin-debian-buster
