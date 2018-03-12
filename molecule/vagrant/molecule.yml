@@ -10,15 +10,15 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: mssql-centos-7
-    box: centos/7
-    memory: 4096
+  # - name: mssql-centos-7
+  #   box: centos/7
+  #   memory: 4096
   - name: mssql-opensuse-openSUSE-42-2-x86-64
     box: opensuse/openSUSE-42.2-x86_64
     memory: 4096
-  - name: mssql-ubuntu-xenial
-    box: ubuntu/xenial64
-    memory: 4096
+  # - name: mssql-ubuntu-xenial
+  #   box: ubuntu/xenial64
+  #   memory: 4096
 provisioner:
   name: ansible
   lint:
