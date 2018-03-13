@@ -8,7 +8,12 @@ Provides Microsoft SQL Server for your system.
 Requirements
 ------------
 
-- access to either internet (using public repositories) or a private repository containing mssql sofware.
+Access to either internet (using public repositories) or a private repository containing mssql sofware.
+Either of these releases:
+- Red Hat Enterprise Linux 7 (Supported)
+- CentOS 7 (Tested)
+- Ubuntu Xenial (Supported and tested)
+- Suse Linux Enterprise Server 12v2. (Supported)
 
 Role Variables
 --------------
