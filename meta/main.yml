@@ -10,21 +10,13 @@ galaxy_info:
     - name: CentOS
       version:
         - 7
-    - name: OpenSUSE
-      versions:
-        - all
     - name: Ubuntu
       versions:
         - xenial
 
   galaxy_tags:
     - mssql
-    - Alpine
-    - ArchLinux
     - CentOS
-    - Debian
-    - Fedora
-    - OpenSUSE
     - Ubuntu
 
 dependencies: []
