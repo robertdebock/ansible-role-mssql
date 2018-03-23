@@ -7,6 +7,9 @@ galaxy_info:
   min_ansible_container_version: 0.2.0
 
   platforms:
+    - name: Centos
+      version:
+        - 7
     - name: EL
       version:
         - 7
