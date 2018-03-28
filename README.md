@@ -12,7 +12,6 @@ This role is a part of many compatible roles. Have a look at [the documentation 
 Here is an overview of related roles:
 ![dependencies](https://raw.githubusercontent.com/robertdebock/robertdebock.github.io/artifacts/mssql.png "Dependency")
 
-
 Requirements
 ------------
 
@@ -41,6 +40,17 @@ Download the dependencies by issuing this command:
 ```
 ansible-galaxy install --role-file requirements.yml
 ```
+
+Compatibility
+-------------
+
+This role has been tested against the following distributions and Ansible version:
+
+|distribution|ansible 2.3|ansible 2.4|ansible 2.5|
+|------------|-----------|-----------|-----------|
+|centos-7|yes|yes|yes|
+|opensuse-42.3|yes|yes|yes|
+|ubuntu-xenial|yes|yes|yes|
 
 Example Playbook
 ----------------
