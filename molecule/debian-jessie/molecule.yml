@@ -13,9 +13,9 @@ platforms:
 provisioner:
   name: ansible
   lint:
-    name: debian-jessie
+    name: ansible-lint
 scenario:
-  name: archlinux
+  name: debian-jessie
   test_sequence:
     - lint
     - destroy
