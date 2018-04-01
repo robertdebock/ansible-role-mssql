@@ -9,7 +9,7 @@ lint:
   name: yamllint
 platforms:
   - name: mssql-alpine-3.7
-    image: alpine-3.7
+    image: alpine:3.7
 provisioner:
   name: ansible
   lint:
