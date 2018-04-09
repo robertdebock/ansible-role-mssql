@@ -45,7 +45,11 @@
   when:
     - ansible_distribution != "Ubuntu"
   notify:
+    - stop mssql-server
     - configure mssql-server using mssql-conf
+
+- name: flush handlers
+  meta: flush_handlers
 
 - name: install software in mssql-server (apt)
   apt:

@@ -1,5 +1,12 @@
 ---
 # handlers file for mssql
+- name: stop mssql-server
+  service:
+    name: mssql-server
+    state: stopped
+  when:
+    - ansible_virtualization_type != "docker"
+
 - name: restart mssql-server
   service:
     name: mssql-server
