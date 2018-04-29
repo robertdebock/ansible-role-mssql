@@ -16,10 +16,12 @@ galaxy_info:
     - name: Ubuntu
       versions:
         - xenial
+        - artful
 
   galaxy_tags:
     - mssql
     - CentOS
+    - OpenSUSE
     - Ubuntu
 
 dependencies: []

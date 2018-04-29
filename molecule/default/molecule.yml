@@ -14,6 +14,8 @@ platforms:
     image: opensuse:42.3
   - name: mssql-ubuntu-xenial
     image: ubuntu:xenial
+  - name: mssql-ubuntu-artful
+    image: ubuntu:artful
 provisioner:
   name: ansible
   lint:

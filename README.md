@@ -48,8 +48,20 @@ This role has been tested against the following distributions and Ansible versio
 
 |distribution|ansible 2.3|ansible 2.4|ansible 2.5|
 |------------|-----------|-----------|-----------|
+|alpine-3.6|no|no|no|
+|alpine-3.7|no|no|no|
+|archlinux|no|no|no|
+|centos-6|no|no|no|
 |centos-7|yes|yes|yes|
+|debian-buster|no|no|no|
+|debian-jessie|no|no|no|
+|debian-stretch|no|no|no|
+|fedora-26|no|no|no|
+|fedora-27|no|no|no|
+|opensuse-42.2|yes|yes|yes|
 |opensuse-42.3|yes|yes|yes|
+|ubuntu-artful|yes|yes|yes|
+|ubuntu-bionic|no|no|no|
 |ubuntu-xenial|yes|yes|yes|
 
 Example Playbook
