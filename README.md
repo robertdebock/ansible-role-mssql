@@ -34,7 +34,8 @@ Dependencies
 ------------
 
 These requirements are described in `requirements.yml`:
-- role: robertdebock.bootstrap
+
+- [robertdebock.bootstrap](https://travis-ci.org/robertdebock/ansible-role-bootstrap)
 
 Download the dependencies by issuing this command:
 ```
