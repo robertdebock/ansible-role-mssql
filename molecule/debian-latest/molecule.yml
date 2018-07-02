@@ -8,14 +8,14 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: mssql-centos-7
-    image: centos:7
+  - name: mssql-debian-latest
+    image: debian:latest
 provisioner:
   name: ansible
   lint:
     name: ansible-lint
 scenario:
-  name: centos-7
+  name: debian-latest
 verifier:
   name: goss
   lint:

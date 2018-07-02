@@ -8,14 +8,14 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: mssql-ubuntu-bionic
-    image: ubuntu:bionic
+  - name: mssql-alpine-latest
+    image: alpine:latest
 provisioner:
   name: ansible
   lint:
     name: ansible-lint
 scenario:
-  name: ubuntu-bionic
+  name: alpine-latest
 verifier:
   name: goss
   lint:
