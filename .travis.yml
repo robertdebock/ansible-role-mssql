@@ -37,12 +37,12 @@ env:
   - version=">=2.4,<2.5" distro="opensuse-tumbleweed" expectation="fail"
   - version=">=2.5,<2.6" distro="opensuse-tumbleweed" expectation="fail"
   - version=">=2.6,<2.7" distro="opensuse-tumbleweed" expectation="fail"
-  - version=">=2.4,<2.5" distro="ubuntu-artful" expectation="fail"
-  - version=">=2.5,<2.6" distro="ubuntu-artful" expectation="fail"
-  - version=">=2.6,<2.7" distro="ubuntu-artful" expectation="fail"
-  - version=">=2.4,<2.5" distro="ubuntu-latest"
-  - version=">=2.5,<2.6" distro="ubuntu-latest"
-  - version=">=2.6,<2.7" distro="ubuntu-latest"
+  - version=">=2.4,<2.5" distro="ubuntu-artful"
+  - version=">=2.5,<2.6" distro="ubuntu-artful"
+  - version=">=2.6,<2.7" distro="ubuntu-artful"
+  - version=">=2.4,<2.5" distro="ubuntu-latest" expectation="fail"
+  - version=">=2.5,<2.6" distro="ubuntu-latest" expectation="fail"
+  - version=">=2.6,<2.7" distro="ubuntu-latest" expectation="fail"
 
 cache:
   - pip
