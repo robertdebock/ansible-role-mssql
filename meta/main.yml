@@ -21,8 +21,8 @@ galaxy_info:
 
   galaxy_tags:
     - mssql
-    - CentOS
-    - OpenSUSE
-    - Ubuntu
+    - centos
+    - opensuse
+    - ubuntu
 
 dependencies: []
