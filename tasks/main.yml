@@ -3,6 +3,7 @@
 - name: add yum repository packages-microsoft-com-mssql-server-2017
   yum_repository:
     name: "{{ item.name }}"
+    state: present
     baseurl: "{{ item.baseurl }}"
     description: "{{ item.description }}"
     gpgkey: "{{ mssql_gpgkey }}"
@@ -15,6 +16,7 @@
 - name: add zypper repository packages-microsoft-com-mssql-server-2017
   zypper_repository:
     name: "{{ item.name }}"
+    state: present
     repo: "{{ item.repo }}"
     auto_import_keys: yes
   when:
@@ -25,6 +27,7 @@
 - name: add apt key
   apt_key:
     url: "{{ mssql_gpgkey }}"
+    state: present
   when:
     - ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
     - mssql_add_repositories == "yes"
@@ -32,6 +35,7 @@
 - name: add apt repository packages-microsoft-com-mssql-server-2017
   apt_repository:
     repo: deb [arch=amd64] "{{ item.repo }}" xenial main
+    state: present
   when:
     - ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
     - mssql_add_repositories == "yes"
@@ -40,6 +44,7 @@
 - name: install software mssql-server (package)
   package:
     name: "{{ mssql_server_package[ansible_distribution] }}"
+    state: present
   environment:
     ACCEPT_EULA: Y
   when:
@@ -54,6 +59,7 @@
 - name: install software in mssql-server (apt)
   apt:
     name: "{{ mssql_server_package[ansible_distribution] }}"
+    state: present
     allow_unauthenticated: yes
   environment:
     ACCEPT_EULA: Y
@@ -65,6 +71,7 @@
 - name: install software mssql-tools (package)
   package:
     name: mssql-tools
+    state: present
   environment:
     ACCEPT_EULA: Y
   when:
@@ -73,6 +80,7 @@
 - name: install software in mssql-tools (apt)
   apt:
     name: mssql-tools
+    state: present
     allow_unauthenticated: yes
   environment:
     ACCEPT_EULA: Y
@@ -82,6 +90,7 @@
 - name: install software mssql-server-agent (package)
   package:
     name: "{{ mssql_server_agent_package[ansible_distribution] }}"
+    state: present
   environment:
     ACCEPT_EULA: Y
   when:
@@ -92,6 +101,7 @@
 - name: install software in mssql-server-agent (apt)
   apt:
     name: "{{ mssql_server_agent_package[ansible_distribution] }}"
+    state: present
     allow_unauthenticated: yes
   environment:
     ACCEPT_EULA: Y
