@@ -44,7 +44,7 @@
 - name: install software mssql-server (package)
   package:
     name: "{{ mssql_server_package[ansible_distribution] }}"
-    state: present
+    state: "{{ mysql_package_state }}"
   environment:
     ACCEPT_EULA: Y
   when:

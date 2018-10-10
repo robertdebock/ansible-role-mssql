@@ -5,7 +5,6 @@ galaxy_info:
   description: Provides mssql for your system.
   license: Apache License, Version 2.0
   min_ansible_version: 2.4
-  min_ansible_container_version: 0.2.0
 
   platforms:
     - name: EL
@@ -13,7 +12,6 @@ galaxy_info:
         - 7
     - name: Ubuntu
       versions:
-        - xenial
         - artful
 
   galaxy_tags:
