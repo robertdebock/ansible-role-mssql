@@ -12,7 +12,7 @@ If you find issues, please register them in [GitHub](https://github.com/robertde
 To test this role locally please use [Molecule](https://github.com/metacloud/molecule):
 ```
 pip install molecule
-molecule test --scenario-name fedora-latest
+molecule test
 ```
 There are many scenarios available, please have a look in the `molecule/` directory.
 
@@ -37,7 +37,7 @@ Role Variables
 --------------
 
 See default values in defaults/main.yml:
-- mssql_add_repositories - Add the repositories?
+- mssql_add_repositories - Add the repositories? [default: yes (boolean)]
 - mssql_sa_password - The password for the administrator.
 - mssql_pid - The type of license to use.
 

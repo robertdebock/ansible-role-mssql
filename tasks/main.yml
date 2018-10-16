@@ -10,8 +10,10 @@
     gpgcheck: yes
   when:
     - ansible_distribution == "CentOS" or ansible_distribution == "Red Hat Enterprise Linux" or ansible_distribution == "Fedora"
-    - mssql_add_repositories == "yes"
+    - mssql_add_repositories
   with_items: "{{ mssql_rhel_repositories }}"
+  loop_control:
+    label: "{{ item.name }}"
 
 - name: add zypper repository packages-microsoft-com-mssql-server-2017
   zypper_repository:
@@ -21,8 +23,10 @@
     auto_import_keys: yes
   when:
     - ansible_distribution == "openSUSE Leap"
-    - mssql_add_repositories == "yes"
+    - mssql_add_repositories
   with_items: "{{ mssql_opensuse_repositories }}"
+  loop_control:
+    label: "{{ item.name }}"
 
 - name: add apt key
   apt_key:
@@ -30,7 +34,7 @@
     state: present
   when:
     - ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
-    - mssql_add_repositories == "yes"
+    - mssql_add_repositories
 
 - name: add apt repository packages-microsoft-com-mssql-server-2017
   apt_repository:
@@ -38,7 +42,7 @@
     state: present
   when:
     - ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
-    - mssql_add_repositories == "yes"
+    - mssql_add_repositories
   with_items: "{{ mssql_ubuntu_repositories }}"
 
 - name: install software mssql-server (package)
