@@ -58,21 +58,25 @@ Compatibility
 
 This role has been tested against the following distributions and Ansible version:
 
-|distribution|ansible 2.4|ansible 2.5|ansible 2.6|
-|------------|-----------|-----------|-----------|
-|alpine-edge|no|no|no|
-|alpine-latest|no|no|no|
-|archlinux|no|no|no|
-|centos-6|no|no|no|
-|centos-latest|yes|yes|yes|
-|debian-latest|no|no|no|
-|debian-stable|no|no|no|
-|fedora-latest|no|no|no|
-|fedora-rawhide|no|no|no|
-|opensuse-leap|yes|yes|yes|
-|opensuse-tumbleweed|no|no|no|
-|ubuntu-artful|yes|yes|yes|
-|ubuntu-latest|no|no|no|
+|distribution|ansible 2.4|ansible 2.5|ansible 2.6|ansible 2.7|ansible devel|
+|------------|-----------|-----------|-----------|-----------|-------------|
+|alpine-edge*|no|no|no|no|no*|
+|alpine-latest|no|no|no|no|no*|
+|archlinux|no|no|no|no|no*|
+|centos-6|no|no|no|no|no*|
+|centos-latest|yes|yes|yes|yes|yes*|
+|debian-latest|no|no|no|no|no*|
+|debian-stable|no|no|no|no|no*|
+|debian-unstable*|no|no|no|no|no*|
+|fedora-latest|no|no|no|no|no*|
+|fedora-rawhide*|no|no|no|no|no*|
+|opensuse-leap|yes|yes|yes|yes|yes*|
+|opensuse-tumbleweed|no|no|no|no|no*|
+|ubuntu-artful|yes|yes|yes|yes|yes*|
+|ubuntu-devel*|no|no|no|no|no*|
+|ubuntu-latest|no|no|no|no|no*|
+
+A single star means the build may fail, it's marked as an experimental build.
 
 Example Playbook
 ----------------
