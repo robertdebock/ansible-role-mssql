@@ -31,3 +31,5 @@ mssql_server_agent_package:
   openSUSE Leap: mssql-server-agent-14.0.3015.40-1
   RedHat: mssql-server-agent
   Ubuntu: mssql-server-agent=14.0.3015.40-1
+
+mssql_fts_package: mssql-server-fts

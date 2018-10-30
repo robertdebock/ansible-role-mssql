@@ -57,9 +57,6 @@
     - stop mssql-server
     - configure mssql-server using mssql-conf
 
-- name: flush handlers
-  meta: flush_handlers
-
 - name: install software in mssql-server (apt)
   apt:
     name: "{{ mssql_server_package[ansible_distribution] }}"
@@ -71,6 +68,9 @@
     - ansible_distribution == "Ubuntu"
   notify:
     - configure mssql-server using mssql-conf
+
+- name: flush handlers
+  meta: flush_handlers
 
 - name: install software mssql-tools (package)
   package:
@@ -111,6 +111,14 @@
     ACCEPT_EULA: Y
   when:
     - ansible_distribution == "Ubuntu"
+  notify:
+    - restart mssql-server
+
+- name: install mssql-server-fts to enable full text search
+  package:
+    name: "{{ mssql_fts_package }}"
+  when:
+    - mssql_fts
   notify:
     - restart mssql-server
 
