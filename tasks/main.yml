@@ -47,7 +47,7 @@
 
 - name: install software mssql-server (package)
   package:
-    name: "{{ mssql_server_package[ansible_distribution] }}"
+    name: "{{ mssql_server_package }}"
     state: "{{ mssql_package_state }}"
   environment:
     ACCEPT_EULA: Y
@@ -59,7 +59,7 @@
 
 - name: install software in mssql-server (apt)
   apt:
-    name: "{{ mssql_server_package[ansible_distribution] }}"
+    name: "{{ mssql_server_package }}"
     state: present
     allow_unauthenticated: yes
   environment:
@@ -93,7 +93,7 @@
 
 - name: install software mssql-server-agent (package)
   package:
-    name: "{{ mssql_server_agent_package[ansible_distribution] }}"
+    name: "{{ mssql_server_agent_package }}"
     state: present
   environment:
     ACCEPT_EULA: Y
@@ -104,7 +104,7 @@
 
 - name: install software in mssql-server-agent (apt)
   apt:
-    name: "{{ mssql_server_agent_package[ansible_distribution] }}"
+    name: "{{ mssql_server_agent_package }}"
     state: present
     allow_unauthenticated: yes
   environment:
