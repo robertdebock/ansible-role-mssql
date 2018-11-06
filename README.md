@@ -3,8 +3,7 @@ mssql
 
 [![Build Status](https://travis-ci.org/robertdebock/ansible-role-mssql.svg?branch=master)](https://travis-ci.org/robertdebock/ansible-role-mssql)
 
-Provides Microsoft SQL Server for your system.
-
+The purpose of this role is to install and configure mssql on your system.
 
 Example Playbook
 ----------------
