@@ -10,10 +10,10 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: mssql-debian
-    box: debian/stretch64
-  - name: mssql-fedora
-    box: fedora/28-cloud-base
+  - name: mssql-centos
+    box: centos/7
+  - name: mssql-opensuse-leap
+    box: opensuse/openSUSE-42.3-x86_64
 provisioner:
   name: ansible
   lint:
