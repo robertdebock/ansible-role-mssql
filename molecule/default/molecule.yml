@@ -38,6 +38,8 @@ platforms:
     image: ubuntu:artful
   - name: mssql-ubuntu-devel
     image: ubuntu:devel
+  - name: mssql-ubuntu-latest
+    image: ubuntu:latest
 provisioner:
   name: ansible
   lint:
