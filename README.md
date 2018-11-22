@@ -57,6 +57,11 @@ mssql_fts: no
 # To update all packages installed by this roles, set `mssql_package_state` to `latest`.
 mssql_package_state: present
 
+# Some Docker containers do not allow managing services, rebooting and writing
+# to some locations in /etc. The role skips tasks that will typically fail in
+# Docker. With this parameter you can tell the role to -not- skip these tasks.
+mssql_ignore_docker: yes
+
 ```
 
 Requirements

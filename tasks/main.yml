@@ -9,7 +9,7 @@
     gpgkey: "{{ mssql_gpgkey }}"
     gpgcheck: yes
   when:
-    - ansible_distribution == "CentOS" or ansible_distribution == "Red Hat Enterprise Linux" or ansible_distribution == "Fedora"
+    - ansible_distribution in [ "CentOS", "RedHat", "Fedora" ]
     - mssql_add_repositories
   with_items: "{{ mssql_rhel_repositories }}"
   loop_control:
@@ -41,7 +41,7 @@
     repo: deb [arch=amd64] "{{ item.repo }}" xenial main
     state: present
   when:
-    - ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
+    - ansible_distribution in [ "Ubuntu", "Debian" ]
     - mssql_add_repositories
   with_items: "{{ mssql_ubuntu_repositories }}"
 
@@ -133,4 +133,4 @@
   environment:
     ACCEPT_EULA: Y
   when:
-    - ansible_virtualization_type != "docker"
+    - ansible_virtualization_type != "docker" or mssql_ignore_docker

@@ -5,14 +5,14 @@
     name: mssql-server
     state: stopped
   when:
-    - ansible_virtualization_type != "docker"
+    - ansible_virtualization_type != "docker" or mssql_ignore_docker
 
 - name: restart mssql-server
   service:
     name: mssql-server
     state: restarted
   when:
-    - ansible_virtualization_type != "docker"
+    - ansible_virtualization_type != "docker" or mssql_ignore_docker
 
 - name: configure mssql-server using mssql-conf
   command: /opt/mssql/bin/mssql-conf -n setup
@@ -21,4 +21,4 @@
     MSSQL_PID: "{{ mssql_pid }}"
     ACCEPT_EULA: Y
   when:
-    - ansible_virtualization_type != "docker"
+    - ansible_virtualization_type != "docker" or mssql_ignore_docker

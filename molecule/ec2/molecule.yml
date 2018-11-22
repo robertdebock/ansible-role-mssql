@@ -8,28 +8,8 @@ driver:
 lint:
   name: yamllint
 platforms:
-  # - name: rhel-7
-  #   image: ami-c86c3f23
-  #   instance_type: t2.micro
-  #   vpc_subnet_id: subnet-0e688067
-  # - name: sles-15
-  #   image: ami-0a1886cf45f944eb1
-  #   instance_type: t2.micro
-  #   vpc_subnet_id: subnet-0e688067
-  - name: mssql-ubuntu-18.04
-    image: ami-0bdf93799014acdc4
-    instance_type: t2.micro
-    vpc_subnet_id: subnet-0e688067
-  - name: mssql-amazon-linux-2
-    image: ami-02ea8f348fa28c108
-    instance_type: t2.micro
-    vpc_subnet_id: subnet-0e688067
-  - name: mssql-centos-7
-    image: ami-9a183671
-    instance_type: t2.micro
-    vpc_subnet_id: subnet-0e688067
-  - name: mssql-fedora-29
-    image: ami-0f904cfaa69a1c64c
+  - name: rhel-7
+    image: ami-c86c3f23
     instance_type: t2.micro
     vpc_subnet_id: subnet-0e688067
 provisioner:
