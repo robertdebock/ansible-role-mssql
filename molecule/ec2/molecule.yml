@@ -10,7 +10,7 @@ lint:
 platforms:
   - name: rhel-7
     image: ami-c86c3f23
-    instance_type: t2.micro
+    instance_type: t2.medium
     vpc_subnet_id: subnet-0e688067
 provisioner:
   name: ansible
