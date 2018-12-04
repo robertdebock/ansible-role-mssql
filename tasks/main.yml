@@ -35,6 +35,9 @@
   when:
     - ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
     - mssql_add_repositories
+  register: mssql_add_apt_key
+  until: mssql_add_apt_key is succeeded
+  retries: 3
 
 - name: add apt repository packages-microsoft-com-mssql-server-2017
   apt_repository:
@@ -56,6 +59,9 @@
   notify:
     - stop mssql-server
     - configure mssql-server using mssql-conf
+  register: mmsql_install_software_mssql_server_package
+  until: mmsql_install_software_mssql_server_package is succeeded
+  retries: 3
 
 - name: install software in mssql-server (apt)
   apt:
@@ -68,6 +74,9 @@
     - ansible_distribution == "Ubuntu"
   notify:
     - configure mssql-server using mssql-conf
+  register: mssql_install_software_in_mssql_server_apt
+  until: mssql_install_software_in_mssql_server_apt is succeeded
+  retries: 3
 
 - name: flush handlers
   meta: flush_handlers
@@ -80,6 +89,9 @@
     ACCEPT_EULA: Y
   when:
     - ansible_distribution != "Ubuntu"
+  register: mssql_install_software_mssql_tools_package
+  until: mssql_install_software_mssql_tools_package is succeeded
+  retries: 3
 
 - name: install software in mssql-tools (apt)
   apt:
@@ -90,6 +102,9 @@
     ACCEPT_EULA: Y
   when:
     - ansible_distribution == "Ubuntu"
+  register: mssql_install_software_in_mssql_tools_apt
+  until: mssql_install_software_in_mssql_tools_apt is succeeded
+  retries: 3
 
 - name: install software mssql-server-agent (package)
   package:
@@ -101,6 +116,9 @@
     - ansible_distribution != "Ubuntu"
   notify:
     - restart mssql-server
+  register: mssql_install_software_mssql_server_agent_package
+  until: mssql_install_software_mssql_server_agent_package is succeeded
+  retries: 3
 
 - name: install software in mssql-server-agent (apt)
   apt:
@@ -113,14 +131,20 @@
     - ansible_distribution == "Ubuntu"
   notify:
     - restart mssql-server
+  register: mssql_install_software_in_mssql_server_agent_apt
+  until: mssql_install_software_in_mssql_server_agent_apt is succeeded
+  retries: 3
 
-- name: install mssql-server-fts to enable full text search
+- name: install mssql-server-fts
   package:
     name: "{{ mssql_fts_package }}"
   when:
     - mssql_fts
   notify:
     - restart mssql-server
+  register: mssql_install_mssql_server_fts
+  until: mssql_install_mssql_server_fts is succeeded
+  retries: 3
 
 - name: flush handlers
   meta: flush_handlers
