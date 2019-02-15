@@ -34,8 +34,10 @@ platforms:
     image: opensuse:leap
   - name: mssql-opensuse-tumbleweed
     image: opensuse:tumbleweed
-  - name: mssql-ubuntu-artful
-    image: ubuntu:artful
+  - name: mssql-ubuntu-latest
+    image: ubuntu:latest
+  - name: mssql-ubuntu-rolling
+    image: ubuntu:rolling
   - name: mssql-ubuntu-devel
     image: ubuntu:devel
   - name: mssql-ubuntu-latest
