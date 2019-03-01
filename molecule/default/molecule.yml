@@ -32,8 +32,6 @@ platforms:
     image: fedora:rawhide
   - name: mssql-opensuse-leap
     image: opensuse:leap
-  - name: mssql-opensuse-tumbleweed
-    image: opensuse:tumbleweed
   - name: mssql-ubuntu-latest
     image: ubuntu:latest
   - name: mssql-ubuntu-rolling
