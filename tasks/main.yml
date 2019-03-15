@@ -51,7 +51,7 @@
 - name: install software mssql-server (package)
   package:
     name: "{{ mssql_server_package }}"
-    state: "{{ mssql_package_state }}"
+    state: present
   environment:
     ACCEPT_EULA: Y
   when:
@@ -157,4 +157,4 @@
   environment:
     ACCEPT_EULA: Y
   when:
-    - ansible_virtualization_type != "docker" or mssql_ignore_docker
+    - ansible_virtualization_type != "docker"

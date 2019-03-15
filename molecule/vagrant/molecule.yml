@@ -3,23 +3,20 @@ dependency:
   name: galaxy
   options:
     role-file: requirements.yml
+lint:
+  name: yamllint
 driver:
   name: vagrant
   provider:
     name: virtualbox
-lint:
-  name: yamllint
 platforms:
-  - name: mssql-centos
-    box: centos/7
-  - name: mssql-opensuse-leap
-    box: opensuse/openSUSE-42.3-x86_64
+  - name: mssql-debian
+    box: debian/stretch64
+  - name: mssql-fedora
+    box: fedora/29-cloud-base
 provisioner:
   name: ansible
   lint:
     name: ansible-lint
-  config_options:
-    defaults:
-      callback_plugins: /usr/lib/python2.7/site-packages/ara/plugins/callbacks
 scenario:
   name: vagrant

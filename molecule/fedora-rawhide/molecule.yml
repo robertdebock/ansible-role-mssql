@@ -3,22 +3,17 @@ dependency:
   name: galaxy
   options:
     role-file: requirements.yml
-driver:
-  name: docker
 lint:
   name: yamllint
+driver:
+  name: docker
 platforms:
   - name: mssql-fedora-rawhide
-    image: fedora-rawhide
+    image: fedora:rawhide
+    registry:
+      url: registry.fedoraproject.org
 provisioner:
   name: ansible
-  inventory:
-    host_vars:
-      mssql-fedora-rawhide:
-        ansible_python_interpreter: /usr/bin/python3
-    group_vars:
-      all:
-        mssql_ignore_docker: no
   lint:
     name: ansible-lint
 scenario:
