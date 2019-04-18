@@ -22,3 +22,8 @@
     ACCEPT_EULA: Y
   when:
     - ansible_virtualization_type != "docker"
+
+- name: set network.ipaddress
+  command: /opt/mssql/bin/mssql-conf set network.ipaddress {{ ansible_default_ipv4.address }}
+  when:
+    - ansible_virtualization_type != "docker"

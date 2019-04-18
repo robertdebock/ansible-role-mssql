@@ -59,6 +59,7 @@
   notify:
     - stop mssql-server
     - configure mssql-server using mssql-conf
+    - set network.ipaddress
   register: mmsql_install_software_mssql_server_package
   until: mmsql_install_software_mssql_server_package is succeeded
   retries: 3
