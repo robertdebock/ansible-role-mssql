@@ -10,7 +10,7 @@
     gpgcheck: yes
   when:
     - ansible_distribution in [ "CentOS", "RedHat", "Fedora" ]
-    - mssql_add_repositories
+    - mssql_add_repositories | bool
   with_items: "{{ mssql_rhel_repositories }}"
   loop_control:
     label: "{{ item.name }}"
@@ -23,7 +23,7 @@
     auto_import_keys: yes
   when:
     - ansible_distribution == "openSUSE Leap"
-    - mssql_add_repositories
+    - mssql_add_repositories | bool
   with_items: "{{ mssql_opensuse_repositories }}"
   loop_control:
     label: "{{ item.name }}"
@@ -34,7 +34,7 @@
     state: present
   when:
     - ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
-    - mssql_add_repositories
+    - mssql_add_repositories | bool
   register: mssql_add_apt_key
   until: mssql_add_apt_key is succeeded
   retries: 3
@@ -45,7 +45,7 @@
     state: present
   when:
     - ansible_distribution in [ "Ubuntu", "Debian" ]
-    - mssql_add_repositories
+    - mssql_add_repositories | bool
   with_items: "{{ mssql_ubuntu_repositories }}"
 
 - name: install software mssql-server (package)
@@ -140,7 +140,7 @@
   package:
     name: "{{ mssql_fts_package }}"
   when:
-    - mssql_fts
+    - mssql_fts | bool
   notify:
     - restart mssql-server
   register: mssql_install_mssql_server_fts
