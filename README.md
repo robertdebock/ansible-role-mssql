@@ -104,12 +104,11 @@ This role has been tested against the following distributions and Ansible versio
 |archlinux|no|no|no*|
 |centos-6|no|no|no*|
 |centos-latest|yes|yes|yes*|
-|debian-latest|no|no|no*|
 |debian-stable|no|no|no*|
 |debian-unstable*|no|no|no*|
 |fedora-latest|no|no|no*|
 |fedora-rawhide*|no|no|no*|
-|opensuse-leap|yes|yes|yes*|
+|opensuse-leap|no|no|no*|
 |ubuntu-devel*|no|no|no*|
 |ubuntu-latest|no|no|no*|
 |ubuntu-rolling|no|no|yes*|
