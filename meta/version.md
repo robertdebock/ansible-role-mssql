@@ -1,0 +1,1 @@
+The upstream version(s) for the projects in this role can be found [here for RHEL](https://packages.microsoft.com/rhel/7/mssql-server-2017/), [here for Ubuntu](https://packages.microsoft.com/ubuntu/16.04/mssql-server-2017/pool/main/m/mssql-server/) and [here for OpenSUSE repository](https://packages.microsoft.com/sles/12/mssql-server-2017/).

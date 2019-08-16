@@ -115,6 +115,13 @@ This role has been tested against the following distributions and Ansible versio
 
 A single star means the build may fail, it's marked as an experimental build.
 
+Not all distributions and/or Ansible version work, because Microsoft has [limited distribution support](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup?view=sql-server-linux-2017).
+
+Upstream version(s)
+-------------------
+
+The upstream version(s) for the projects in this role can be found [here for RHEL](https://packages.microsoft.com/rhel/7/mssql-server-2017/), [here for Ubuntu](https://packages.microsoft.com/ubuntu/16.04/mssql-server-2017/pool/main/m/mssql-server/) and [here for OpenSUSE repository](https://packages.microsoft.com/sles/12/mssql-server-2017/).
+
 Testing
 -------
 
