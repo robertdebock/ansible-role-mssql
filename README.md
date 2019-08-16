@@ -117,10 +117,15 @@ A single star means the build may fail, it's marked as an experimental build.
 
 Not all distributions and/or Ansible version work, because Microsoft has [limited distribution support](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup?view=sql-server-linux-2017).
 
-Upstream version(s)
+Included version(s)
 -------------------
 
-The upstream version(s) for the projects in this role can be found [here for RHEL](https://packages.microsoft.com/rhel/7/mssql-server-2017/), [here for Ubuntu](https://packages.microsoft.com/ubuntu/16.04/mssql-server-2017/pool/main/m/mssql-server/) and [here for OpenSUSE repository](https://packages.microsoft.com/sles/12/mssql-server-2017/).
+This role [refers to a version](https://github.com/robertdebock/ansible-role-mssql/blob/master/vars/main.yml) released by Microsoft. Check the released version(s) here:
+- [SQL for RHEL](https://packages.microsoft.com/rhel/7/mssql-server-2017/).
+- [SQL for Ubuntu](https://packages.microsoft.com/ubuntu/16.04/mssql-server-2017/pool/main/m/mssql-server/).
+- [SQL for SLES](https://packages.microsoft.com/sles/12/mssql-server-2017/).
+
+This version reference means a role may get outdated. Monthly tests occur to see if [bit-rot](https://en.wikipedia.org/wiki/Software_rot) occured. If you however find a problem, please create an issue, I'll get on it as soon as possible.
 
 Testing
 -------
