@@ -47,6 +47,10 @@ These variables are set in `defaults/main.yml`:
 # See vars/main.yml for the location of the repositories. Can be: yes, true or 1.
 mssql_add_repositories: yes
 
+# Select the version of server and server_agent to install.
+mssql_server_version: 14.0.3223.3-15
+mssql_server_agent_version: 14.0.3015.40-1
+
 # mssql_sa_password contains the password for a system administrator.
 # The password must be at least 8 characters long and contain characters from three of the following four sets:
 # - uppercase letters
@@ -132,7 +136,7 @@ Some variarations of the build matrix do not work. These are the variations and 
 Included version(s)
 -------------------
 
-This role [refers to a version](https://github.com/robertdebock/ansible-role-mssql/blob/master/vars/main.yml) released by Microsoft. Check the released version(s) here:
+This role [refers to a version](https://github.com/robertdebock/ansible-role-mssql/blob/master/defaults/main.yml) released by Microsoft. Check the released version(s) here:
 - [SQL for RHEL](https://packages.microsoft.com/rhel/7/mssql-server-2017/).
 - [SQL for Ubuntu](https://packages.microsoft.com/ubuntu/16.04/mssql-server-2017/pool/main/m/mssql-server/).
 - [SQL for SLES](https://packages.microsoft.com/sles/12/mssql-server-2017/).

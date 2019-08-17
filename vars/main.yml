@@ -17,22 +17,22 @@ mssql_opensuse_repositories:
     repo: https://packages.microsoft.com/sles/12/prod/
 
 mssql_ubuntu_repositories:
-  - repo: https://packages.microsoft.com/ubuntu/16.04/mssql-server-2017
-  - repo: https://packages.microsoft.com/ubuntu/16.04/prod
+  - repo: https://packages.microsoft.com/ubuntu/{{ ansible_distribution_version }}/mssql-server-2017
+  - repo: https://packages.microsoft.com/ubuntu/{{ ansible_distribution_version }}/prod
 
 _mssql_server_package:
   CentOS: mssql-server
-  openSUSE Leap: mssql-server-14.0.3223.3-15
+  openSUSE Leap: mssql-server-{{ mssql_server_version }}
   RedHat: mssql-server
-  Ubuntu: mssql-server=14.0.3223.3-15
+  Ubuntu: mssql-server={{ mssql_server_version }}
 
 mssql_server_package: "{{ _mssql_server_package[ansible_distribution] }}"
 
 _mssql_server_agent_package:
   CentOS: mssql-server-agent
-  openSUSE Leap: mssql-server-agent-14.0.3015.40-1
+  openSUSE Leap: mssql-server-agent-{{ mssql_server_agent_version }}
   RedHat: mssql-server-agent
-  Ubuntu: mssql-server-agent=14.0.3015.40-1
+  Ubuntu: mssql-server-agent={{ mssql_server_agent_version }}
 
 mssql_server_agent_package: "{{ _mssql_server_agent_package[ansible_distribution] }}"
 
