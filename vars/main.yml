@@ -22,9 +22,9 @@ mssql_ubuntu_repositories:
 
 _mssql_server_package:
   CentOS: mssql-server
-  openSUSE Leap: mssql-server-14.0.3015.40-1
+  openSUSE Leap: mssql-server-14.0.3223.3-15
   RedHat: mssql-server
-  Ubuntu: mssql-server=14.0.3015.40-1
+  Ubuntu: mssql-server=14.0.3223.3-15
 
 mssql_server_package: "{{ _mssql_server_package[ansible_distribution] }}"
 
