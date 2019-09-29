@@ -87,6 +87,20 @@ The following roles can be installed to ensure all requirements are met, using `
 
 ```
 
+This role uses the following modules:
+```yaml
+---
+- apt
+- apt_key
+- apt_repository
+- command
+- meta
+- package
+- service
+- yum_repository
+- zypper_repository
+```
+
 Context
 -------
 
