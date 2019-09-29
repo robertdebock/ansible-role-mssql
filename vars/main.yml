@@ -21,19 +21,17 @@ mssql_ubuntu_repositories:
   - repo: https://packages.microsoft.com/ubuntu/{{ ansible_distribution_version }}/prod
 
 _mssql_server_package:
-  CentOS: mssql-server
-  openSUSE Leap: mssql-server-{{ mssql_server_version }}
+  Debian: mssql-server={{ mssql_server_version }}
   RedHat: mssql-server
-  Ubuntu: mssql-server={{ mssql_server_version }}
+  Suse: mssql-server-{{ mssql_server_version }}
 
-mssql_server_package: "{{ _mssql_server_package[ansible_distribution] }}"
+mssql_server_package: "{{ _mssql_server_package[ansible_os_family] }}"
 
 _mssql_server_agent_package:
-  CentOS: mssql-server-agent
-  openSUSE Leap: mssql-server-agent-{{ mssql_server_agent_version }}
+  Debian: mssql-server-agent={{ mssql_server_agent_version }}
   RedHat: mssql-server-agent
-  Ubuntu: mssql-server-agent={{ mssql_server_agent_version }}
+  Suse: mssql-server-agent-{{ mssql_server_agent_version }}
 
-mssql_server_agent_package: "{{ _mssql_server_agent_package[ansible_distribution] }}"
+mssql_server_agent_package: "{{ _mssql_server_agent_package[ansible_os_family] }}"
 
 mssql_fts_package: mssql-server-fts
