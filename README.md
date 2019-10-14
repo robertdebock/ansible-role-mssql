@@ -123,8 +123,8 @@ This role has been tested against the following distributions and Ansible versio
 |alpine-edge*|no|no|no*|
 |alpine-latest|no|no|no*|
 |archlinux|no|no|no*|
-|centos-7|no|no|no*|
-|centos-latest|yes|yes|yes*|
+|centos-7|yes|yes|yes*|
+|centos-latest|no|no|no*|
 |debian-stable|no|no|no*|
 |debian-unstable*|no|no|no*|
 |fedora-latest|no|no|no*|
