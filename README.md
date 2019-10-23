@@ -116,25 +116,23 @@ Here is an overview of related roles:
 Compatibility
 -------------
 
-This role has been tested against the following distributions and Ansible version:
+This role has been tested on these [container images](https://hub.docker.com/):
 
-|distribution|ansible 2.7|ansible 2.8|ansible devel|
-|------------|-----------|-----------|-------------|
-|alpine-edge*|no|no|no*|
-|alpine-latest|no|no|no*|
-|archlinux|no|no|no*|
-|centos-7|yes|yes|yes*|
-|centos-latest|no|no|no*|
-|debian-stable|no|no|no*|
-|debian-unstable*|no|no|no*|
-|fedora-latest|no|no|no*|
-|fedora-rawhide*|no|no|no*|
-|opensuse-leap|no|no|no*|
-|ubuntu-devel*|no|no|no*|
-|ubuntu-latest|no|no|no*|
-|ubuntu-rolling|no|no|yes*|
+|container|tag|allow_failures|
+|---------|---|--------------|
+|docker-centos-systemd|latest|no|
+|docker-redhat-systemd|latest|no|
+|docker-ubuntu-systemd|rolling|yes|
+|docker-ubuntu-systemd|devel|yes|
+|docker-ubuntu-systemd|latest|no|
 
-A single star means the build may fail, it's marked as an experimental build.
+This role has been tested on these Ansible versions:
+
+- ansible~=2.7
+- ansible~=2.8
+- git+https://github.com/ansible/ansible.git@devel
+
+The indicator '\~=' means [compatible with](https://www.python.org/dev/peps/pep-0440/#compatible-release). For example 'ansible\~=2.8' would pick the latest ansible-2.8, for example ansible-2.8.6.
 
 Exceptions
 ----------
