@@ -9,8 +9,8 @@ galaxy_info:
 
   platforms:
     - name: EL
-      version:
-        - 7
+      versions:
+        - 8
     - name: Ubuntu
       versions:
         - artful
