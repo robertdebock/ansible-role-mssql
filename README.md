@@ -120,11 +120,11 @@ This role has been tested on these [container images](https://hub.docker.com/):
 
 |container|tag|allow_failures|
 |---------|---|--------------|
-|docker-centos-systemd|latest|no|
-|docker-redhat-systemd|latest|no|
-|docker-ubuntu-systemd|rolling|yes|
-|docker-ubuntu-systemd|devel|yes|
-|docker-ubuntu-systemd|latest|no|
+|centos|latest|no|
+|redhat|latest|no|
+|ubuntu|rolling|yes|
+|ubuntu|devel|yes|
+|ubuntu|latest|no|
 
 This role has been tested on these Ansible versions:
 

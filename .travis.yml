@@ -8,17 +8,19 @@ services:
   - docker
 
 env:
+  global:
+    namespace="robertdebock"
   matrix:
-    - image="docker-centos-systemd"
-    - image="docker-redhat-systemd"
-    - image="docker-ubuntu-systemd" tag="rolling"
-    - image="docker-ubuntu-systemd" tag="devel"
-    - image="docker-ubuntu-systemd"
+    - image="centos"
+    - image="redhat"
+    - image="ubuntu" tag="rolling"
+    - image="ubuntu" tag="devel"
+    - image="ubuntu"
 
 matrix:
   allow_failures:
-    - env: image="docker-ubuntu-systemd" tag="rolling"
-    - env: image="docker-ubuntu-systemd" tag="devel"
+    - env: image="ubuntu" tag="rolling"
+    - env: image="ubuntu" tag="devel"
 
 cache:
   - pip
