@@ -121,7 +121,6 @@ This role has been tested on these [container images](https://hub.docker.com/):
 |container|tag|allow_failures|
 |---------|---|--------------|
 |centos|latest|no|
-|redhat|latest|no|
 |ubuntu|rolling|yes|
 |ubuntu|devel|yes|
 |ubuntu|latest|no|

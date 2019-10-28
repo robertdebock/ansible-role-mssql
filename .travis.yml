@@ -12,7 +12,6 @@ env:
     namespace="robertdebock"
   matrix:
     - image="centos"
-    - image="redhat"
     - image="ubuntu" tag="rolling"
     - image="ubuntu" tag="devel"
     - image="ubuntu"
