@@ -33,7 +33,8 @@ The machine you are running this on, may need to be prepared.
   become: yes
 
   roles:
-    - robertdebock.bootstrap
+    - role: robertdebock.bootstrap
+    - role: robertdebock.ca_certificates
 ```
 
 Also see a [full explanation and example](https://robertdebock.nl/how-to-use-these-roles.html) on how to use these roles.
@@ -87,6 +88,7 @@ The following roles can be installed to ensure all requirements are met, using `
 ```yaml
 ---
 - robertdebock.bootstrap
+- robertdebock.ca_certificates
 
 ```
 
@@ -106,7 +108,7 @@ This role has been tested on these [container images](https://hub.docker.com/):
 
 |container|tag|allow_failures|
 |---------|---|--------------|
-|centos|latest|no|
+|centos|7|no|
 |ubuntu|rolling|yes|
 |ubuntu|devel|yes|
 |ubuntu|latest|no|

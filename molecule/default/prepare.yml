@@ -5,4 +5,5 @@
   become: yes
 
   roles:
-    - robertdebock.bootstrap
+    - role: robertdebock.bootstrap
+    - role: robertdebock.ca_certificates
