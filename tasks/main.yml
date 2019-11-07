@@ -157,5 +157,3 @@
     enabled: yes
   environment:
     ACCEPT_EULA: Y
-  when:
-    - ansible_virtualization_type != "docker"

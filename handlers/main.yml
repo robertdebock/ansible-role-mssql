@@ -4,15 +4,11 @@
   service:
     name: mssql-server
     state: stopped
-  when:
-    - ansible_virtualization_type != "docker"
 
 - name: restart mssql-server
   service:
     name: mssql-server
     state: restarted
-  when:
-    - ansible_virtualization_type != "docker"
 
 - name: configure mssql-server using mssql-conf
   command: /opt/mssql/bin/mssql-conf -n setup
@@ -20,10 +16,6 @@
     MSSQL_SA_PASSWORD: "{{ mssql_sa_password }}"
     MSSQL_PID: "{{ mssql_pid }}"
     ACCEPT_EULA: Y
-  when:
-    - ansible_virtualization_type != "docker"
 
 - name: set network.ipaddress
   command: /opt/mssql/bin/mssql-conf set network.ipaddress {{ ansible_default_ipv4.address }}
-  when:
-    - ansible_virtualization_type != "docker"
