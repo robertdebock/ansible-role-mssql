@@ -31,6 +31,7 @@ The machine you are running this on, may need to be prepared.
 
   roles:
     - role: robertdebock.bootstrap
+    - role: robertdebock.core_dependencies
     - role: robertdebock.ca_certificates
 ```
 
@@ -85,6 +86,7 @@ The following roles can be installed to ensure all requirements are met, using `
 ```yaml
 ---
 - robertdebock.bootstrap
+- robertdebock.core_dependencies
 - robertdebock.ca_certificates
 
 ```
