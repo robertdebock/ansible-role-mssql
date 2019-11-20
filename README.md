@@ -33,7 +33,7 @@ The machine you are running this on, may need to be prepared.
     - role: robertdebock.bootstrap
     - role: robertdebock.core_dependencies
     - role: robertdebock.ca_certificates
-    - role: microsoft_repository_keys
+    - role: robertdebock.microsoft_repository_keys
 ```
 
 Also see a [full explanation and example](https://robertdebock.nl/how-to-use-these-roles.html) on how to use these roles.

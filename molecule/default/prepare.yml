@@ -8,4 +8,4 @@
     - role: robertdebock.bootstrap
     - role: robertdebock.core_dependencies
     - role: robertdebock.ca_certificates
-    - role: microsoft_repository_keys
+    - role: robertdebock.microsoft_repository_keys
