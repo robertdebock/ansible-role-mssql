@@ -1,6 +1,6 @@
 ---
 # tasks file for mssql
-- name: add yum repository packages-microsoft-com-mssql-server-2017
+- name: add yum repository packages-microsoft-com-mssql-server-2019
   yum_repository:
     name: "{{ item.name }}"
     state: present
@@ -15,31 +15,7 @@
   loop_control:
     label: "{{ item.name }}"
 
-- name: add zypper repository packages-microsoft-com-mssql-server-2017
-  zypper_repository:
-    name: "{{ item.name }}"
-    state: present
-    repo: "{{ item.repo }}"
-    auto_import_keys: yes
-  when:
-    - ansible_distribution == "openSUSE Leap"
-    - mssql_add_repositories | bool
-  with_items: "{{ mssql_opensuse_repositories }}"
-  loop_control:
-    label: "{{ item.name }}"
-
-- name: add apt key
-  apt_key:
-    url: "{{ mssql_gpgkey }}"
-    state: present
-  when:
-    - ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
-    - mssql_add_repositories | bool
-  register: mssql_add_apt_key
-  until: mssql_add_apt_key is succeeded
-  retries: 3
-
-- name: add apt repository packages-microsoft-com-mssql-server-2017
+- name: add apt repository packages-microsoft-com-mssql-server-2019
   apt_repository:
     repo: deb [arch=amd64] "{{ item.repo }}" xenial main
     state: present

@@ -33,6 +33,7 @@ The machine you are running this on, may need to be prepared.
     - role: robertdebock.bootstrap
     - role: robertdebock.core_dependencies
     - role: robertdebock.ca_certificates
+    - role: microsoft_repository_keys
 ```
 
 Also see a [full explanation and example](https://robertdebock.nl/how-to-use-these-roles.html) on how to use these roles.
@@ -88,6 +89,7 @@ The following roles can be installed to ensure all requirements are met, using `
 - robertdebock.bootstrap
 - robertdebock.core_dependencies
 - robertdebock.ca_certificates
+- robertdebock.microsoft_repository_keys
 
 ```
 
@@ -107,8 +109,6 @@ This role has been tested on these [container images](https://hub.docker.com/):
 
 |container|tag|allow_failures|
 |---------|---|--------------|
-|amazonlinux|1|no|
-|amazonlinux|latest|no|
 |centos|7|no|
 |ubuntu|latest|no|
 
@@ -131,6 +131,7 @@ Some variarations of the build matrix do not work. These are the variations and 
 | Fedora | Microsoft has [limited distribution support](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup?view=sql-server-linux-2017). |
 | openSUSE | Microsoft has [limited distribution support](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup?view=sql-server-linux-2017). |
 | Ubuntu | Microsoft has [limited distribution support](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup?view=sql-server-linux-2017). |
+| amazonlinux | Microsoft has [limited distribution support](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup?view=sql-server-linux-2017). |
 
 Included version(s)
 -------------------
@@ -184,14 +185,12 @@ This role uses the following modules:
 ```yaml
 ---
 - apt
-- apt_key
 - apt_repository
 - command
 - meta
 - package
 - service
 - yum_repository
-- zypper_repository
 ```
 
 License

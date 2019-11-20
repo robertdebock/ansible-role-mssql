@@ -2,3 +2,4 @@
 - robertdebock.bootstrap
 - robertdebock.core_dependencies
 - robertdebock.ca_certificates
+- robertdebock.microsoft_repository_keys
