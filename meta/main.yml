@@ -18,6 +18,5 @@ galaxy_info:
   galaxy_tags:
     - mssql
     - centos
-    - ubuntu
 
 dependencies: []
