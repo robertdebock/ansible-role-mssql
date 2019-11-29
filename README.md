@@ -51,8 +51,13 @@ These variables are set in `defaults/main.yml`:
 # See vars/main.yml for the location of the repositories. Can be: yes, true or 1.
 mssql_add_repositories: yes
 
+# What version to use, currently either 2017 or 2019.
+# `2017` is the only working version now, `2019` lacks the required
+# mssql-server-agent package.
+mssql_version: "2017"
+
 # Select the version of server and server_agent to install.
-mssql_server_version: 14.0.3223.3-15
+mssql_server_version: 14.0.3238.1-19
 mssql_server_agent_version: 14.0.3015.40-1
 
 # mssql_sa_password contains the password for a system administrator.

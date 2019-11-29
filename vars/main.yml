@@ -3,15 +3,15 @@
 mssql_gpgkey: https://packages.microsoft.com/keys/microsoft.asc
 
 mssql_rhel_repositories:
-  - name: packages-microsoft-com-mssql-server-2019
+  - name: packages-microsoft-com-mssql-server-{{ mssql_version }}
     description: Microsoft MSSQL server
-    baseurl: https://packages.microsoft.com/rhel/7/mssql-server-2019/
+    baseurl: https://packages.microsoft.com/rhel/7/mssql-server-{{ mssql_version }}/
   - name: packages-microsoft-com-prod
     description: Microsoft tools
     baseurl: https://packages.microsoft.com/rhel/7/prod/
 
 mssql_ubuntu_repositories:
-  - repo: https://packages.microsoft.com/ubuntu/{{ ansible_distribution_version }}/mssql-server-2019
+  - repo: https://packages.microsoft.com/ubuntu/{{ ansible_distribution_version }}/mssql-server-{{ mssql_version }}
   - repo: https://packages.microsoft.com/ubuntu/{{ ansible_distribution_version }}/prod
 
 _mssql_server_package:
