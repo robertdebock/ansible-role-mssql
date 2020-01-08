@@ -13,7 +13,6 @@ galaxy_info:
         - 7
     - name: Ubuntu
       versions:
-        - artful
 
   galaxy_tags:
     - mssql
