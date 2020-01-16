@@ -31,6 +31,8 @@ jobs:
         config:
           - image: "centos"
             tag: "7"
+          - image: "ubuntu"
+            tag: "xenial"
     steps:
       - name: checkout
         uses: actions/checkout@v2
