@@ -11,9 +11,6 @@ galaxy_info:
     - name: EL
       versions:
         - 7
-    - name: Ubuntu
-      versions:
-        - xenial
 
   galaxy_tags:
     - mssql

@@ -17,7 +17,7 @@
 
 - name: add apt repository
   apt_repository:
-    repo: deb [arch=amd64] "{{ item.repo }}" {{ ansible_distribution_release }} main
+    repo: deb [arch=amd64,arm64,armhf] "{{ item.repo }}" {{ ansible_distribution_release }} main
     state: present
   when:
     - ansible_os_family == "Debian"
