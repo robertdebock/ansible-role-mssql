@@ -11,8 +11,8 @@ mssql_rhel_repositories:
     baseurl: https://packages.microsoft.com/rhel/7/prod/
 
 mssql_ubuntu_repositories:
-  - repo: https://packages.microsoft.com/ubuntu/{{ ansible_distribution_version }}/mssql-server-2019
-  - repo: https://packages.microsoft.com/ubuntu/{{ ansible_distribution_version }}/prod
+  - repo: https://packages.microsoft.com/ubuntu/16.04/prod
+  - repo: https://packages.microsoft.com/ubuntu/16.04/mssql-server-2019
 
 _mssql_server_package:
   Debian: mssql-server={{ mssql_server_version }}

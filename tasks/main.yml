@@ -15,14 +15,17 @@
   loop_control:
     label: "{{ item.name }}"
 
-- name: add apt repository packages-microsoft-com-mssql-server-2019
+- name: add apt repository
   apt_repository:
-    repo: deb [arch=amd64] "{{ item.repo }}" xenial main
+    repo: deb [arch=amd64] "{{ item.repo }}" {{ ansible_distribution_release }} main
     state: present
   when:
-    - ansible_distribution in [ "Ubuntu", "Debian" ]
+    - ansible_os_family == "Debian"
     - mssql_add_repositories | bool
   with_items: "{{ mssql_ubuntu_repositories }}"
+  register: mssql_add_apt_repository
+  until: mssql_add_apt_repository is succeeded
+  retries: 3
 
 - name: install software mssql-server (package)
   package:
