@@ -11,7 +11,7 @@
   when:
     - ansible_distribution in [ "CentOS", "RedHat", "Fedora" ]
     - mssql_add_repositories | bool
-  with_items: "{{ mssql_rhel_repositories }}"
+  loop: "{{ mssql_rhel_repositories }}"
   loop_control:
     label: "{{ item.name }}"
 
@@ -22,7 +22,7 @@
   when:
     - ansible_os_family == "Debian"
     - mssql_add_repositories | bool
-  with_items: "{{ mssql_ubuntu_repositories }}"
+  loop: "{{ mssql_ubuntu_repositories }}"
   register: mssql_add_apt_repository
   until: mssql_add_apt_repository is succeeded
   retries: 3
