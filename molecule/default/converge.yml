@@ -5,4 +5,4 @@
   gather_facts: yes
 
   roles:
-    - ansible-role-mssql
+    - role: ansible-role-mssql
