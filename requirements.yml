@@ -1,5 +1,5 @@
 ---
 - robertdebock.bootstrap
-- robertdebock.core_dependencies
 - robertdebock.ca_certificates
+- robertdebock.core_dependencies
 - robertdebock.microsoft_repository_keys
