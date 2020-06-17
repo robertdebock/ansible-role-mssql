@@ -39,8 +39,8 @@
     - stop mssql-server
     - configure mssql-server using mssql-conf
     - set network.ipaddress
-  register: mmsql_install_software_mssql_server_package
-  until: mmsql_install_software_mssql_server_package is succeeded
+  register: mssql_install_software_mssql_server_package
+  until: mssql_install_software_mssql_server_package is succeeded
   retries: 3
 
 - name: install software in mssql-server (apt)
