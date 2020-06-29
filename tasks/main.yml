@@ -1,5 +1,8 @@
 ---
 # tasks file for mssql
+- name: include assert.yml
+  include_tasks: assert.yml
+
 - name: add yum repository packages-microsoft-com-mssql-server-2019
   yum_repository:
     name: "{{ item.name }}"

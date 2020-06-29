@@ -15,7 +15,8 @@ mssql_server_version: 14.0.3238.1-19
 mssql_server_agent_version: 14.0.3015.40-1
 
 # mssql_sa_password contains the password for a system administrator.
-# The password must be at least 8 characters long and contain characters from three of the following four sets:
+# The password must be at least 8 characters long and contain characters from
+# three of the following four sets:
 # - uppercase letters
 # - lowercase letters
 # - numbers
