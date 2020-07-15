@@ -18,4 +18,4 @@
     ACCEPT_EULA: Y
 
 - name: set network.ipaddress
-  command: /opt/mssql/bin/mssql-conf set network.ipaddress {{ ansible_default_ipv4.address }}
+  command: /opt/mssql/bin/mssql-conf set network.ipaddress {{ ansible_default_ipv4.address|default(ansible_all_ipv4_addresses[0]) }}
