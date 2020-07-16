@@ -26,9 +26,6 @@
     - ansible_os_family == "Debian"
     - mssql_add_repositories | bool
   loop: "{{ mssql_ubuntu_repositories }}"
-  register: mssql_add_apt_repository
-  until: mssql_add_apt_repository is succeeded
-  retries: 3
 
 - name: install software mssql-server (package)
   package:
@@ -42,9 +39,6 @@
     - stop mssql-server
     - configure mssql-server using mssql-conf
     - set network.ipaddress
-  register: mssql_install_software_mssql_server_package
-  until: mssql_install_software_mssql_server_package is succeeded
-  retries: 3
 
 - name: install software in mssql-server (apt)
   apt:
@@ -57,9 +51,6 @@
     - ansible_distribution == "Ubuntu"
   notify:
     - configure mssql-server using mssql-conf
-  register: mssql_install_software_in_mssql_server_apt
-  until: mssql_install_software_in_mssql_server_apt is succeeded
-  retries: 3
 
 - name: flush handlers
   meta: flush_handlers
@@ -72,9 +63,6 @@
     ACCEPT_EULA: Y
   when:
     - ansible_distribution != "Ubuntu"
-  register: mssql_install_software_mssql_tools_package
-  until: mssql_install_software_mssql_tools_package is succeeded
-  retries: 3
 
 - name: install software in mssql-tools (apt)
   apt:
@@ -85,9 +73,6 @@
     ACCEPT_EULA: Y
   when:
     - ansible_distribution == "Ubuntu"
-  register: mssql_install_software_in_mssql_tools_apt
-  until: mssql_install_software_in_mssql_tools_apt is succeeded
-  retries: 3
 
 - name: install software mssql-server-agent (package)
   package:
@@ -99,9 +84,6 @@
     - ansible_distribution != "Ubuntu"
   notify:
     - restart mssql-server
-  register: mssql_install_software_mssql_server_agent_package
-  until: mssql_install_software_mssql_server_agent_package is succeeded
-  retries: 3
 
 - name: install software in mssql-server-agent (apt)
   apt:
@@ -114,9 +96,6 @@
     - ansible_distribution == "Ubuntu"
   notify:
     - restart mssql-server
-  register: mssql_install_software_in_mssql_server_agent_apt
-  until: mssql_install_software_in_mssql_server_agent_apt is succeeded
-  retries: 3
 
 - name: install mssql-server-fts
   package:
@@ -125,9 +104,6 @@
     - mssql_fts | bool
   notify:
     - restart mssql-server
-  register: mssql_install_mssql_server_fts
-  until: mssql_install_mssql_server_fts is succeeded
-  retries: 3
 
 - name: flush handlers
   meta: flush_handlers
