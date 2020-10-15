@@ -67,7 +67,7 @@ mssql_add_repositories: yes
 mssql_version: "2017"
 
 # Select the version of server and server_agent to install.
-mssql_server_version: 14.0.3238.1-19
+mssql_server_version: 14.0.3294.2-27
 mssql_server_agent_version: 14.0.3015.40-1
 
 # mssql_sa_password contains the password for a system administrator.
