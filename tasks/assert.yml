@@ -39,7 +39,7 @@
     that:
       - mssql_pid is defined
       - mssql_pid | length > 0
-      - mssql_pid in ["Evaluation", "Developer", "Express", "Web", "Standard", "Enterprise"] or
+      - mssql_pid in [ "Evaluation", "Developer", "Express", "Web", "Standard", "Enterprise" ] or
         mssql_pid is regex("^.....-.....-.....-.....-......$")
     quiet: yes
 
