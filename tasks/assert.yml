@@ -10,35 +10,30 @@
   assert:
     that:
       - mssql_version is defined
-      - mssql_version | length > 0
     quiet: yes
 
 - name: test if mssql_server_version is set correctly
   assert:
     that:
       - mssql_server_version is defined
-      - mssql_server_version | length > 0
     quiet: yes
 
 - name: test if mssql_server_agent_version is set correctly
   assert:
     that:
       - mssql_server_agent_version is defined
-      - mssql_server_agent_version | length > 0
     quiet: yes
 
 - name: test if mssql_sa_password is set correctly
   assert:
     that:
       - mssql_sa_password is defined
-      - mssql_sa_password | length > 0
     quiet: yes
 
 - name: test if mssql_pid is set correctly
   assert:
     that:
       - mssql_pid is defined
-      - mssql_pid | length > 0
       - mssql_pid in [ "Evaluation", "Developer", "Express", "Web", "Standard", "Enterprise" ] or
         mssql_pid is regex("^.....-.....-.....-.....-......$")
     quiet: yes
