@@ -3,7 +3,7 @@
   assert:
     that:
       - mssql_add_repositories is defined
-      - mssql_add_repositories | type_debug == "bool"
+      - mssql_add_repositories is boolean
     quiet: yes
 
 - name: test if mssql_version is set correctly
@@ -47,5 +47,5 @@
   assert:
     that:
       - mssql_fts is defined
-      - mssql_fts | type_debug == "bool"
+      - mssql_fts is boolean
     quiet: yes
