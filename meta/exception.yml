@@ -1,16 +1,16 @@
 ---
 exceptions:
-  - variation: Alpine
+  - variation: alpine
     reason: Microsoft has [limited distribution support](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup?view=sql-server-linux-2017).
-  - variation: Archlinux
+  - variation: debian
     reason: Microsoft has [limited distribution support](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup?view=sql-server-linux-2017).
-  - variation: Debian
+  - variation: fedora
     reason: Microsoft has [limited distribution support](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup?view=sql-server-linux-2017).
-  - variation: Fedora
+  - variation: opensuse
     reason: Microsoft has [limited distribution support](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup?view=sql-server-linux-2017).
-  - variation: openSUSE
-    reason: Microsoft has [limited distribution support](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup?view=sql-server-linux-2017).
-  - variation: Ubuntu
+  - variation: ubuntu
     reason: Microsoft has [limited distribution support](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup?view=sql-server-linux-2017).
   - variation: amazonlinux
     reason: Microsoft has [limited distribution support](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup?view=sql-server-linux-2017).
+  - variation: centos:8
+    reason: "nothing provides python needed by mssql-server-14.0.3356.20-23.x86_64"
