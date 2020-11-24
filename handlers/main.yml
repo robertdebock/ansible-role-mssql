@@ -1,14 +1,19 @@
 ---
 # handlers file for mssql
+
 - name: stop mssql-server
   service:
     name: mssql-server
     state: stopped
+  when:
+    - not ansible_check_mode | bool
 
 - name: restart mssql-server
   service:
     name: mssql-server
     state: restarted
+  when:
+    - not ansible_check_mode | bool
 
 - name: configure mssql-server using mssql-conf
   command: /opt/mssql/bin/mssql-conf -n setup
