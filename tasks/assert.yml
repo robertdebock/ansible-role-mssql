@@ -1,4 +1,5 @@
 ---
+
 - name: test if mssql_add_repositories is set correctly
   assert:
     that:
