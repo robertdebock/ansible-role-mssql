@@ -2,9 +2,9 @@
 
 Install and configure mssql on your system.
 
-|Travis|GitHub|GitLab|Quality|Downloads|Version|
-|------|------|------|-------|---------|-------|
-|[![travis](https://travis-ci.com/robertdebock/ansible-role-mssql.svg?branch=master)](https://travis-ci.com/robertdebock/ansible-role-mssql)|[![github](https://github.com/robertdebock/ansible-role-mssql/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-mssql/actions)|[![gitlab](https://gitlab.com/robertdebock/ansible-role-mssql/badges/master/pipeline.svg)](https://gitlab.com/robertdebock/ansible-role-mssql)|[![quality](https://img.shields.io/ansible/quality/24094)](https://galaxy.ansible.com/robertdebock/mssql)|[![downloads](https://img.shields.io/ansible/role/d/24094)](https://galaxy.ansible.com/robertdebock/mssql)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-mssql.svg)](https://github.com/robertdebock/ansible-role-mssql/releases/)|
+|GitHub|GitLab|Quality|Downloads|Version|
+|------|------|-------|---------|-------|
+|[![github](https://github.com/robertdebock/ansible-role-mssql/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-mssql/actions)|[![gitlab](https://gitlab.com/robertdebock/ansible-role-mssql/badges/master/pipeline.svg)](https://gitlab.com/robertdebock/ansible-role-mssql)|[![quality](https://img.shields.io/ansible/quality/24094)](https://galaxy.ansible.com/robertdebock/mssql)|[![downloads](https://img.shields.io/ansible/role/d/24094)](https://galaxy.ansible.com/robertdebock/mssql)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-mssql.svg)](https://github.com/robertdebock/ansible-role-mssql/releases/)|
 
 ## [Example Playbook](#example-playbook)
 
@@ -88,12 +88,12 @@ mssql_fts: no
 
 The following roles are used to prepare a system. You may choose to prepare your system in another way, I have tested these roles as well.
 
-| Requirement | Travis | GitHub |
+| Requirement | GitHub | GitLab |
 |-------------|--------|--------|
-| [robertdebock.bootstrap](https://galaxy.ansible.com/robertdebock/bootstrap) | [![Build Status Travis](https://travis-ci.com/robertdebock/ansible-role-bootstrap.svg?branch=master)](https://travis-ci.com/robertdebock/ansible-role-bootstrap) | [![Build Status GitHub](https://github.com/robertdebock/ansible-role-bootstrap/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-bootstrap/actions) |
-| [robertdebock.ca_certificates](https://galaxy.ansible.com/robertdebock/ca_certificates) | [![Build Status Travis](https://travis-ci.com/robertdebock/ansible-role-ca_certificates.svg?branch=master)](https://travis-ci.com/robertdebock/ansible-role-ca_certificates) | [![Build Status GitHub](https://github.com/robertdebock/ansible-role-ca_certificates/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-ca_certificates/actions) |
-| [robertdebock.core_dependencies](https://galaxy.ansible.com/robertdebock/core_dependencies) | [![Build Status Travis](https://travis-ci.com/robertdebock/ansible-role-core_dependencies.svg?branch=master)](https://travis-ci.com/robertdebock/ansible-role-core_dependencies) | [![Build Status GitHub](https://github.com/robertdebock/ansible-role-core_dependencies/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-core_dependencies/actions) |
-| [robertdebock.microsoft_repository_keys](https://galaxy.ansible.com/robertdebock/microsoft_repository_keys) | [![Build Status Travis](https://travis-ci.com/robertdebock/ansible-role-microsoft_repository_keys.svg?branch=master)](https://travis-ci.com/robertdebock/ansible-role-microsoft_repository_keys) | [![Build Status GitHub](https://github.com/robertdebock/ansible-role-microsoft_repository_keys/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-microsoft_repository_keys/actions) |
+| [robertdebock.bootstrap](https://galaxy.ansible.com/robertdebock/bootstrap) | [![Build Status GitHub](https://github.com/robertdebock/ansible-role-bootstrap/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-bootstrap/actions) | [![Build Status GitLab ](https://gitlab.com/robertdebock/ansible-role-ansible-role-bootstrap/badges/master/pipeline.svg)](https://gitlab.com/robertdebock/ansible-role-bootstrap)
+| [robertdebock.ca_certificates](https://galaxy.ansible.com/robertdebock/ca_certificates) | [![Build Status GitHub](https://github.com/robertdebock/ansible-role-ca_certificates/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-ca_certificates/actions) | [![Build Status GitLab ](https://gitlab.com/robertdebock/ansible-role-ansible-role-ca_certificates/badges/master/pipeline.svg)](https://gitlab.com/robertdebock/ansible-role-ca_certificates)
+| [robertdebock.core_dependencies](https://galaxy.ansible.com/robertdebock/core_dependencies) | [![Build Status GitHub](https://github.com/robertdebock/ansible-role-core_dependencies/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-core_dependencies/actions) | [![Build Status GitLab ](https://gitlab.com/robertdebock/ansible-role-ansible-role-core_dependencies/badges/master/pipeline.svg)](https://gitlab.com/robertdebock/ansible-role-core_dependencies)
+| [robertdebock.microsoft_repository_keys](https://galaxy.ansible.com/robertdebock/microsoft_repository_keys) | [![Build Status GitHub](https://github.com/robertdebock/ansible-role-microsoft_repository_keys/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-microsoft_repository_keys/actions) | [![Build Status GitLab ](https://gitlab.com/robertdebock/ansible-role-ansible-role-microsoft_repository_keys/badges/master/pipeline.svg)](https://gitlab.com/robertdebock/ansible-role-microsoft_repository_keys)
 
 ## [Context](#context)
 
@@ -110,7 +110,7 @@ This role has been tested on these [container images](https://hub.docker.com/u/r
 |---------|----|
 |el|7|
 
-The minimum version of Ansible required is 2.9, tests have been done to:
+The minimum version of Ansible required is 2.10, tests have been done to:
 
 - The previous version.
 - The current version.
@@ -138,39 +138,7 @@ This role [refers to a version](https://github.com/robertdebock/ansible-role-mss
 - [SQL for SLES](https://packages.microsoft.com/sles/12/mssql-server-2017/).
 
 This version reference means a role may get outdated. Monthly tests occur to see if [bit-rot](https://en.wikipedia.org/wiki/Software_rot) occured. If you however find a problem, please create an issue, I'll get on it as soon as possible.
-## [Testing](#testing)
-
-[Unit tests](https://travis-ci.com/robertdebock/ansible-role-mssql) are done on every commit, pull request, release and periodically.
-
 If you find issues, please register them in [GitHub](https://github.com/robertdebock/ansible-role-mssql/issues)
-
-Testing is done using [Tox](https://tox.readthedocs.io/en/latest/) and [Molecule](https://github.com/ansible/molecule):
-
-[Tox](https://tox.readthedocs.io/en/latest/) tests multiple ansible versions.
-[Molecule](https://github.com/ansible/molecule) tests multiple distributions.
-
-To test using the defaults (any installed ansible version, namespace: `robertdebock`, image: `fedora`, tag: `latest`):
-
-```
-molecule test
-
-# Or select a specific image:
-image=ubuntu molecule test
-# Or select a specific image and a specific tag:
-image="debian" tag="stable" tox
-```
-
-Or you can test multiple versions of Ansible, and select images:
-Tox allows multiple versions of Ansible to be tested. To run the default (namespace: `robertdebock`, image: `fedora`, tag: `latest`) tests:
-
-```
-tox
-
-# To run CentOS (namespace: `robertdebock`, tag: `latest`)
-image="centos" tox
-# Or customize more:
-image="debian" tag="stable" tox
-```
 
 ## [License](#license)
 
