@@ -2,14 +2,14 @@
 # handlers file for mssql
 
 - name: stop mssql-server
-  service:
+  ansible.builtin.service:
     name: mssql-server
     state: stopped
   when:
     - not ansible_check_mode | bool
 
 - name: restart mssql-server
-  service:
+  ansible.builtin.service:
     name: mssql-server
     state: restarted
   when:
