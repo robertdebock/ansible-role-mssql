@@ -16,7 +16,9 @@ molecule:
   retry: 1
   parallel:
     matrix:
-      - image: "centos"
+      - image: "amazonlinux"
+        tag: "latest"
+      - image: "rockylinux"
         tag: "7"
 
 galaxy:

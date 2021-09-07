@@ -33,7 +33,9 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - image: "centos"
+          - image: "amazonlinux"
+            tag: "latest"
+          - image: "rockylinux"
             tag: "7"
     steps:
       - name: checkout
