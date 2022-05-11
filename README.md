@@ -117,14 +117,6 @@ The minimum version of Ansible required is 2.10, tests have been done to:
 - The current version.
 - The development version.
 
-## [Included version(s)](#included-versions)
-
-This role [refers to a version](https://github.com/robertdebock/ansible-role-mssql/blob/master/defaults/main.yml) released by Microsoft. Check the released version(s) here:
-- [SQL for RHEL](https://packages.microsoft.com/rhel/7/mssql-server-2017/).
-- [SQL for Ubuntu](https://packages.microsoft.com/ubuntu/16.04/mssql-server-2017/pool/main/m/mssql-server/).
-- [SQL for SLES](https://packages.microsoft.com/sles/12/mssql-server-2017/).
-
-This version reference means a role may get outdated. Monthly tests occur to see if [bit-rot](https://en.wikipedia.org/wiki/Software_rot) occured. If you however find a problem, please create an issue, I'll get on it as soon as possible.
 
 If you find issues, please register them in [GitHub](https://github.com/robertdebock/ansible-role-mssql/issues)
 
