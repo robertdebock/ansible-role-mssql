@@ -12,6 +12,7 @@
     that:
       - mssql_version is defined
       - mssql_version is string
+      - mssql_version is not none
     quiet: yes
 
 - name: assert | Test if mssql_server_version is set correctly
@@ -19,6 +20,7 @@
     that:
       - mssql_server_version is defined
       - mssql_server_version is string
+      - mssql_server_version is not none
     quiet: yes
 
 - name: assert | Test if mssql_server_agent_version is set correctly
@@ -26,6 +28,7 @@
     that:
       - mssql_server_agent_version is defined
       - mssql_server_agent_version is string
+      - mssql_server_agent_version is not none
     quiet: yes
 
 - name: assert | Test if mssql_sa_password is set correctly
@@ -33,6 +36,7 @@
     that:
       - mssql_sa_password is defined
       - mssql_sa_password is string
+      - mssql_sa_password is not none
     quiet: yes
 
 - name: assert | Test if mssql_pid is set correctly
