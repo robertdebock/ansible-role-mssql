@@ -1,4 +1,4 @@
-# [mssql](#mssql)
+# Ansible role [mssql](#mssql)
 
 Install and configure mssql on your system.
 
@@ -111,8 +111,8 @@ This role has been tested on these [container images](https://hub.docker.com/u/r
 
 |container|tags|
 |---------|----|
-|[Amazon](https://hub.docker.com/repository/docker/robertdebock/amazonlinux/general)|Candidate|
-|[EL](https://hub.docker.com/repository/docker/robertdebock/enterpriselinux/general)|7|
+|[Amazon](https://hub.docker.com/r/robertdebock/amazonlinux)|Candidate|
+|[EL](https://hub.docker.com/r/robertdebock/enterpriselinux)|7|
 
 The minimum version of Ansible required is 2.12, tests have been done to:
 
