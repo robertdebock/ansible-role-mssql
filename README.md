@@ -1,4 +1,4 @@
-# Ansible role [mssql](#mssql)
+# [Ansible role mssql](#mssql)
 
 Install and configure mssql on your system.
 
